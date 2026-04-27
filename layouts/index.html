@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="it" id="page-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loris Amato — System Administrator</title>
+<meta name="description" content="Loris Amato — System Administrator specializzato in Linux, Kubernetes, VMware e infrastrutture enterprise. Basato a Bari, Italia.">
+<meta name="keywords" content="sysadmin, kubernetes, linux, vmware, devops, bari, postgresql, rhcsa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117; --bg2: #111820; --bg3: #161e28;
+    --surface: #1a2332; --surface2: #1f2a3a;
+    --border: rgba(0,188,212,0.12);
+    --cyan: #00bcd4;
+    --cyan-dim: rgba(0,188,212,0.18);
+    --cyan-glow: 0 0 12px rgba(0,188,212,0.5), 0 0 24px rgba(0,188,212,0.2);
+    --text: #d0dde8; --text-dim: #6b7f94; --text-bright: #eaf4ff;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Space Grotesk', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.65; overflow-x: hidden; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: radial-gradient(circle, rgba(0,188,212,0.06) 1px, transparent 1px);
+    background-size: 28px 28px; pointer-events: none; z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 56px;
+    background: rgba(13,17,23,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-left { display: flex; align-items: center; gap: 12px; }
+  .nav-avatar { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--cyan); box-shadow: 0 0 8px rgba(0,188,212,0.4); flex-shrink: 0; background: var(--surface); }
+  .nav-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .logo { font-family: var(--mono); font-size: 13px; color: var(--cyan); letter-spacing: 0.08em; }
+  .logo span { color: var(--text-dim); }
+  nav ul { display: flex; gap: 32px; list-style: none; }
+  nav ul a { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  nav ul a:hover { color: var(--cyan); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  #lang-toggle {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-dim); padding: 6px 14px; border-radius: 5px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  #lang-toggle:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  /* ── LAYOUT ── */
+  section { position: relative; z-index: 1; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 0 60px; background: linear-gradient(160deg, #0d1117 60%, #0a1e2a 100%); }
+  #hero .container { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+  .hero-tag { font-family: var(--mono); font-size: 12px; color: var(--cyan); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .hero-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--cyan); }
+  h1 { font-size: clamp(44px, 6vw, 72px); font-weight: 700; color: var(--text-bright); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; }
+  h1 em { font-style: normal; color: var(--cyan); }
+  .hero-subtitle { font-family: var(--mono); font-size: 15px; color: var(--cyan); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; min-height: 24px; }
+  .cursor { display: inline-block; width: 2px; height: 1em; background: var(--cyan); animation: blink 1s step-end infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .hero-bio { font-size: 17px; color: var(--text-dim); max-width: 520px; line-height: 1.7; margin-bottom: 36px; }
+  .hero-links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-link { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); text-decoration: none; background: var(--surface); transition: all 0.2s; }
+  .hero-link:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: var(--cyan-glow); background: var(--cyan-dim); }
+  .hero-link svg { width: 16px; height: 16px; fill: currentColor; }
+  .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .hero-photo-wrap { position: relative; width: 180px; height: 220px; flex-shrink: 0; margin-bottom: 8px; }
+  .hero-photo-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 16px; background: linear-gradient(135deg, var(--cyan), transparent 60%); z-index: 0; }
+  .hero-photo-wrap::after { content: ''; position: absolute; inset: 0; border-radius: 14px; box-shadow: 0 0 40px rgba(0,188,212,0.2); z-index: 2; pointer-events: none; }
+  .hero-photo { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 14px; overflow: hidden; background: var(--bg3); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); min-width: 200px; }
+  .hero-card .label { color: var(--cyan); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .hero-card .val { color: var(--text); font-size: 13px; }
+  .stat-row { display: flex; justify-content: space-between; gap: 16px; margin-top: 4px; }
+  .stat { text-align: center; }
+  .stat .n { font-size: 20px; font-weight: 700; color: var(--cyan); display: block; }
+  .stat .l { font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ── SECTION HEADER ── */
+  .sec-header { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; }
+  .sec-header h2 { font-size: 13px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.15em; color: var(--cyan); white-space: nowrap; }
+  .sec-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── SKILLS ── */
+  #skills { padding: 96px 0; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.25s, box-shadow 0.25s; }
+  .skill-card.visible { opacity: 1; transform: translateY(0); }
+  .skill-card:hover { border-color: rgba(0,188,212,0.35); box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,188,212,0.1); }
+  .skill-card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .skill-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--cyan-dim); border: 1px solid rgba(0,188,212,0.25); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .skill-icon svg { width: 18px; height: 18px; fill: var(--cyan); }
+  .skill-cat-name { font-size: 13px; font-weight: 600; color: var(--text-bright); letter-spacing: 0.02em; }
+  .skill-cat-count { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.18); background: var(--bg3); color: var(--text-dim); cursor: default; transition: all 0.18s; letter-spacing: 0.02em; }
+  .pill:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 8px rgba(0,188,212,0.35); transform: translateY(-1px); background: var(--cyan-dim); }
+  .pill.hi { border-color: rgba(0,188,212,0.3); color: var(--text); background: rgba(0,188,212,0.06); }
+
+  /* ── TIMELINE ── */
+  #experience { padding: 96px 0; background: var(--bg2); }
+  .timeline { position: relative; display: grid; grid-template-columns: 1fr 40px 1fr; row-gap: 0; }
+  .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); background: linear-gradient(to bottom, var(--cyan) 0%, rgba(0,188,212,0.1) 100%); }
+  .tl-left, .tl-right { padding: 0 32px 64px; opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; }
+  .tl-left { transform: translateX(-48px); }
+  .tl-right { transform: translateX(48px); }
+  .tl-left.visible, .tl-right.visible { opacity: 1; transform: translateX(0); }
+  .tl-dot-col { display: flex; flex-direction: column; align-items: center; padding-bottom: 64px; }
+  .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); border: 2px solid var(--bg2); flex-shrink: 0; margin-top: 8px; transition: transform 0.3s; }
+  .tl-dot:hover { transform: scale(1.4); }
+  .tl-dot.edu { background: rgba(0,188,212,0.4); box-shadow: none; }
+  .tl-date { font-family: var(--mono); font-size: 11px; color: var(--cyan); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .tl-role { font-size: 20px; font-weight: 700; color: var(--text-bright); line-height: 1.2; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .tl-company { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tl-content.left-side .tl-company { justify-content: flex-end; }
+  .tl-company em { font-style: normal; color: var(--text); font-weight: 500; }
+  .tl-company .loc { font-family: var(--mono); font-size: 10px; padding: 2px 7px; border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); }
+  .tl-prose { font-size: 14px; color: var(--text-dim); line-height: 1.75; }
+  .tl-prose strong { color: var(--text); font-weight: 500; }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+  .tl-content.left-side .tl-tags { justify-content: flex-end; }
+  .tl-content.left-side { text-align: right; }
+  .tl-tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 3px; border: 1px solid var(--border); color: var(--text-dim); background: var(--surface); }
+  .tl-empty { padding-bottom: 64px; }
+
+  /* ── CERTS ── */
+  #certs { padding: 96px 0; }
+  .cert-card { display: inline-flex; align-items: center; gap: 20px; background: var(--surface); border: 1px solid rgba(0,188,212,0.3); border-radius: 12px; padding: 24px 32px; box-shadow: 0 0 32px rgba(0,188,212,0.08); }
+  .cert-badge { width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #00bcd4 0%, #006978 100%); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff; text-align: center; line-height: 1.2; flex-shrink: 0; box-shadow: 0 0 20px rgba(0,188,212,0.4); }
+  .cert-name { font-size: 17px; font-weight: 600; color: var(--text-bright); margin-bottom: 4px; }
+  .cert-vendor { font-size: 13px; color: var(--cyan); margin-top: 2px; }
+  .cert-id { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
+
+  /* ── PROJECTS ── */
+  #projects { padding: 96px 0; background: var(--bg2); }
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+  .proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s; cursor: default; }
+  .proj-card.visible { opacity: 1; transform: translateY(0); }
+  .proj-card:hover { border-color: var(--cyan); transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 16px rgba(0,188,212,0.1); }
+  .proj-icon { font-size: 20px; margin-bottom: 10px; }
+  .proj-title { font-size: 14px; font-weight: 600; color: var(--text-bright); margin-bottom: 6px; }
+  .proj-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ── LANGUAGES ── */
+  #languages { padding: 96px 0; }
+  .lang-list { display: flex; flex-direction: column; gap: 16px; max-width: 400px; }
+  .lang-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .lang-name { font-size: 15px; font-weight: 500; color: var(--text); min-width: 80px; }
+  .lang-level { font-family: var(--mono); font-size: 11px; color: var(--text-dim); min-width: 40px; text-align: right; }
+  .stars { display: flex; gap: 4px; }
+  .star { width: 14px; height: 14px; border-radius: 2px; background: var(--surface2); border: 1px solid var(--border); }
+  .star.on { background: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 6px rgba(0,188,212,0.5); }
+
+  /* ── FOOTER ── */
+  footer { padding: 40px 32px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--text-dim); position: relative; z-index: 1; }
+  .f-name { color: var(--cyan); }
+
+  /* ── SCROLL REVEAL ── */
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    nav ul { display: none; }
+    #hero .container { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    h1 { font-size: 40px; }
+    .timeline { grid-template-columns: 20px 1fr; }
+    .timeline::before { left: 10px; transform: none; }
+    .tl-left, .tl-right { grid-column: 2; padding: 0 0 48px 24px; text-align: left !important; transform: translateX(-24px); }
+    .tl-dot-col { grid-column: 1; }
+    .tl-empty { display: none; }
+    .tl-content.left-side .tl-company,
+    .tl-content.left-side .tl-tags { justify-content: flex-start; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    nav { padding: 0 20px; }
+    .container { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-avatar">
+      <img src="{{ "images/avatar.jpg" | relURL }}" alt="Loris Amato">
+    </div>
+    <div class="logo"><span>~/</span>loris-amato</div>
+  </div>
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience" data-i18n="nav-exp">Esperienza</a></li>
+    <li><a href="#certs">Certs</a></li>
+    <li><a href="#projects" data-i18n="nav-projects">Progetti</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="lang-toggle" onclick="toggleLang()">🌐 EN</button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-left">
+      <div class="hero-tag" data-i18n="hero-tag">System Administrator · Bari, Italia</div>
+      <h1>Loris<br><em>Amato</em></h1>
+      <div class="hero-subtitle">
+        <span id="typed"></span><span class="cursor"></span>
+      </div>
+      <p class="hero-bio" data-i18n="hero-bio">
+        Problem solver analitico con la passione per le infrastrutture critiche.
+        Mi occupo di ambienti enterprise Linux, virtualizzazione, Kubernetes e
+        reti definite dal software — con occhio sempre puntato su affidabilità e automazione.
+      </p>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/loris-amato-570b88198" class="hero-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:lorisamato97@yahoo.it" class="hero-link">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Email
+        </a>
+        <a href="https://github.com/Lorisforse" class="hero-link" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo">
+          <img src="{{ "images/avatar.jpg" | relURL }}" alt="Loris Amato">
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="label" data-i18n="hero-card-label">Posizione attuale</div>
+        <div class="val">System Administrator</div>
+        <div style="color:var(--cyan);font-size:11px;margin-top:2px;">@ Deda Cle · 2025–present</div>
+      </div>
+      <div class="hero-card">
+        <div class="stat-row">
+          <div class="stat"><span class="n">7+</span><span class="l" data-i18n="stat-anni">Anni IT</span></div>
+          <div class="stat"><span class="n">3+</span><span class="l">SysAdm</span></div>
+          <div class="stat"><span class="n">1</span><span class="l">RHCSA</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-skills">// Competenze</h2></div>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-os">Sistemi Operativi</div>
+            <div class="skill-cat-count" data-i18n="cat-os-count">5 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">Linux</span><span class="pill hi">Red Hat</span>
+          <span class="pill hi">Oracle Linux</span><span class="pill">Ubuntu</span>
+          <span class="pill">Windows Server</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-cloud">Virtualizzazione &amp; Cloud</div>
+            <div class="skill-cat-count" data-i18n="cat-cloud-count">5 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">VMware</span><span class="pill">oVirt</span>
+          <span class="pill">AWS</span><span class="pill">Oracle Cloud</span><span class="pill">Sangfor</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M20 13H4a2 2 0 00-2 2v4a2 2 0 002 2h16a2 2 0 002-2v-4a2 2 0 00-2-2zm-2 4a1 1 0 110-2 1 1 0 010 2zM4 3h16v2H4zm0 4h16v2H4z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-containers">Containers &amp; DevOps</div>
+            <div class="skill-cat-count" data-i18n="cat-containers-count">2 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">Kubernetes</span><span class="pill hi">Docker</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-net">Networking</div>
+            <div class="skill-cat-count" data-i18n="cat-net-count">5 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">NSX-T</span><span class="pill">Firewall</span>
+          <span class="pill">VPN</span><span class="pill">NGINX</span><span class="pill">TCP/IP</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm6 14c0 .5-2.13 2-6 2s-6-1.5-6-2v-2.23c1.61.78 3.72 1.23 6 1.23s4.39-.45 6-1.23V17zm0-5c0 .5-2.13 2-6 2s-6-1.5-6-2v-2.23C7.61 10.55 9.72 11 12 11s4.39-.45 6-1.23V12zm-6-3C8.13 9 6 7.5 6 7s2.13-2 6-2 6 1.5 6 2-2.13 2-6 2z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-db">Database</div>
+            <div class="skill-cat-count" data-i18n="cat-db-count">3 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">PostgreSQL</span><span class="pill">MySQL</span><span class="pill">MSSQL</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-11h2V7h-2v2z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-mon">Monitoring &amp; Backup</div>
+            <div class="skill-cat-count" data-i18n="cat-mon-count">3 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill hi">Zabbix</span><span class="pill">Veeam</span><span class="pill">Vinchin</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-script">Scripting</div>
+            <div class="skill-cat-count" data-i18n="cat-script-count">3 linguaggi</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill">PowerShell</span><span class="pill">Python</span><span class="pill">Bash</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+          <div>
+            <div class="skill-cat-name" data-i18n="cat-it">IT Administration</div>
+            <div class="skill-cat-count" data-i18n="cat-it-count">3 tecnologie</div>
+          </div>
+        </div>
+        <div class="skill-pills">
+          <span class="pill">Active Directory</span><span class="pill">Office 365</span><span class="pill">Exchange</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-exp">// Esperienza &amp; Formazione</h2></div>
+    <div class="timeline">
+
+      <!-- 1: right -->
+      <div class="tl-empty"></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-content right-side">
+          <div class="tl-date" data-i18n="tl1-date">2025 — Presente</div>
+          <div class="tl-role">System Administrator</div>
+          <div class="tl-company"><em>Deda Cle</em><span class="loc" data-i18n="tl1-loc">Bari, Italia</span></div>
+          <p class="tl-prose" data-i18n="tl1-prose">In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA/MyPay</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Kubernetes</span><span class="tl-tag">VMware</span><span class="tl-tag">NSX-T</span>
+            <span class="tl-tag">PostgreSQL</span><span class="tl-tag">Veeam</span><span class="tl-tag">Zabbix</span>
+            <span class="tl-tag">Red Hat</span><span class="tl-tag">Oracle Linux</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2: left -->
+      <div class="tl-left">
+        <div class="tl-content left-side">
+          <div class="tl-date">2022 — 2025</div>
+          <div class="tl-role">System Administrator</div>
+          <div class="tl-company"><em>Auriga S.P.A.</em><span class="loc" data-i18n="tl2-loc">Bari, Italia</span></div>
+          <p class="tl-prose" data-i18n="tl2-prose">In Auriga ho consolidato le fondamenta del mio profilo da sysadmin, gestendo un parco VM misto <strong>Windows e Linux su VMware</strong> in un contesto bancario ad alta disponibilità. Ho progettato e mantenuto le strategie di <strong>backup con Veeam</strong>, sviluppato soluzioni di automazione in <strong>PowerShell, Python e Bash</strong> per ridurre i task ripetitivi e aumentare la coerenza delle configurazioni. Sul fronte sicurezza, ho implementato soluzioni <strong>antispam enterprise</strong> e contribuito alla postura di cybersecurity aziendale. Ho gestito integralmente l'ecosistema Microsoft: <strong>Active Directory, Exchange e Office 365</strong>, garantendo l'identità digitale e la collaborazione degli utenti.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">VMware</span><span class="tl-tag">Veeam</span><span class="tl-tag">PowerShell</span>
+            <span class="tl-tag">Python</span><span class="tl-tag">Bash</span><span class="tl-tag">Active Directory</span>
+            <span class="tl-tag">Office 365</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-empty"></div>
+
+      <!-- 3: right -->
+      <div class="tl-empty"></div>
+      <div class="tl-dot-col"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-content right-side">
+          <div class="tl-date">2019 — 2022</div>
+          <div class="tl-role">Software Tester</div>
+          <div class="tl-company"><em>Auriga S.P.A.</em><span class="loc" data-i18n="tl3-loc">Bari, Italia</span></div>
+          <p class="tl-prose" data-i18n="tl3-prose">Il mio percorso in Auriga è iniziato come Software Tester su software ATM bancario sviluppato in <strong>Java</strong>. Un ruolo che ha affinato l'approccio analitico e la mentalità difensiva che oggi applico all'infrastruttura: identificare i punti di rottura prima che lo faccia la produzione. Ho validato requisiti <strong>funzionali e di sicurezza</strong>, contribuendo alla qualità di sistemi che gestiscono transazioni finanziarie reali.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Java</span><span class="tl-tag">Test funzionale</span>
+            <span class="tl-tag">Sicurezza</span><span class="tl-tag">Banking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4: left — education -->
+      <div class="tl-left">
+        <div class="tl-content left-side">
+          <div class="tl-date" data-i18n="tl4-date">2018 — presente</div>
+          <div class="tl-role" data-i18n="tl4-role">Laurea in Informatica</div>
+          <div class="tl-company"><em>Università degli Studi di Bari</em><span class="loc">Bari</span></div>
+          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>Informatica per la Comunicazione Digitale (L-31)</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2025</strong>.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Java</span><span class="tl-tag">C</span>
+            <span class="tl-tag">Python</span><span class="tl-tag">Android</span><span class="tl-tag">MySQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-dot-col"><div class="tl-dot edu"></div></div>
+      <div class="tl-empty"></div>
+
+      <!-- 5: right — education -->
+      <div class="tl-empty"></div>
+      <div class="tl-dot-col" style="padding-bottom:0;"><div class="tl-dot edu"></div></div>
+      <div class="tl-right" style="padding-bottom:0;">
+        <div class="tl-content right-side">
+          <div class="tl-date">2011 — 2016</div>
+          <div class="tl-role" data-i18n="tl5-role">Diploma Scientifico</div>
+          <div class="tl-company"><em>Liceo V. Vecchi</em><span class="loc">Trani</span></div>
+          <p class="tl-prose" data-i18n="tl5-prose">Curriculum <strong>Scienze Applicate</strong> con primo approccio strutturato a matematica, fisica e informatica — la scintilla che ha orientato tutto il percorso successivo verso la tecnologia.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTS ── -->
+<section id="certs">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-certs">// Certificazioni</h2></div>
+    <div class="cert-card fade-up">
+      <div class="cert-badge">RH<br>CSA</div>
+      <div>
+        <div class="cert-name">Red Hat Certified System Administrator</div>
+        <div class="cert-vendor">Red Hat · EX200</div>
+        <div class="cert-id">Exam ID: EX200KV10</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-projects">// Progetti &amp; Interessi</h2></div>
+    <div class="project-grid">
+      <div class="proj-card">
+        <div class="proj-icon">🏠</div>
+        <div class="proj-title">Homelab</div>
+        <div class="proj-desc" data-i18n="proj-homelab">Raspberry Pi, Home Assistant, Docker, automazioni IoT in ambiente domestico</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🏷</div>
+        <div class="proj-title">Nefta</div>
+        <div class="proj-desc" data-i18n="proj-nefta">Startup NFC smart tag per scheduling B2B tramite tag programmabili</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🖨</div>
+        <div class="proj-title">3D Printing</div>
+        <div class="proj-desc" data-i18n="proj-3d">Stampa 3D applicata a prototipi e componenti personalizzati</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">📱</div>
+        <div class="proj-title">Flutter Dev</div>
+        <div class="proj-desc" data-i18n="proj-flutter">Sviluppo app cross-platform Android &amp; iOS con Flutter</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">💾</div>
+        <div class="proj-title">Home NAS &amp; VPN</div>
+        <div class="proj-desc" data-i18n="proj-nas">NAS self-hosted con accesso remoto sicuro via VPN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LANGUAGES ── -->
+<section id="languages">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-langs">// Lingue</h2></div>
+    <div class="lang-list">
+      <div class="lang-row fade-up">
+        <span class="lang-name">Italiano</span>
+        <div class="stars">
+          <div class="star on"></div><div class="star on"></div><div class="star on"></div>
+          <div class="star on"></div><div class="star on"></div>
+        </div>
+        <span class="lang-level" data-i18n="lang-it-level">Madrelingua</span>
+      </div>
+      <div class="lang-row fade-up">
+        <span class="lang-name">English</span>
+        <div class="stars">
+          <div class="star on"></div><div class="star on"></div><div class="star on"></div>
+          <div class="star"></div><div class="star"></div>
+        </div>
+        <span class="lang-level">B2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span><span class="f-name">Loris Amato</span> © 2025</span>
+  <span style="font-family:var(--mono);font-size:11px;color:rgba(0,188,212,0.4);" data-i18n="footer-sub">System Administrator · Bari, Italia</span>
+</footer>
+
+<script>
+/* ── i18n ── */
+const translations = {
+  it: {
+    'nav-exp':            'Esperienza',
+    'nav-projects':       'Progetti',
+    'hero-tag':           'System Administrator · Bari, Italia',
+    'hero-bio':           'Problem solver analitico con la passione per le infrastrutture critiche. Mi occupo di ambienti enterprise Linux, virtualizzazione, Kubernetes e reti definite dal software — con occhio sempre puntato su affidabilità e automazione.',
+    'hero-card-label':    'Posizione attuale',
+    'stat-anni':          'Anni IT',
+    'sec-skills':         '// Competenze',
+    'cat-os':             'Sistemi Operativi',
+    'cat-os-count':       '5 tecnologie',
+    'cat-cloud':          'Virtualizzazione &amp; Cloud',
+    'cat-cloud-count':    '5 tecnologie',
+    'cat-containers':     'Containers &amp; DevOps',
+    'cat-containers-count':'2 tecnologie',
+    'cat-net':            'Networking',
+    'cat-net-count':      '5 tecnologie',
+    'cat-db':             'Database',
+    'cat-db-count':       '3 tecnologie',
+    'cat-mon':            'Monitoring &amp; Backup',
+    'cat-mon-count':      '3 tecnologie',
+    'cat-script':         'Scripting',
+    'cat-script-count':   '3 linguaggi',
+    'cat-it':             'IT Administration',
+    'cat-it-count':       '3 tecnologie',
+    'sec-exp':            '// Esperienza &amp; Formazione',
+    'tl1-date':           '2025 — Presente',
+    'tl1-loc':            'Bari, Italia',
+    'tl1-prose':          'In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA/MyPay</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L\'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.',
+    'tl2-loc':            'Bari, Italia',
+    'tl2-prose':          'In Auriga ho consolidato le fondamenta del mio profilo da sysadmin, gestendo un parco VM misto <strong>Windows e Linux su VMware</strong> in un contesto bancario ad alta disponibilità. Ho progettato e mantenuto le strategie di <strong>backup con Veeam</strong>, sviluppato soluzioni di automazione in <strong>PowerShell, Python e Bash</strong> per ridurre i task ripetitivi e aumentare la coerenza delle configurazioni. Sul fronte sicurezza, ho implementato soluzioni <strong>antispam enterprise</strong> e contribuito alla postura di cybersecurity aziendale. Ho gestito integralmente l\'ecosistema Microsoft: <strong>Active Directory, Exchange e Office 365</strong>, garantendo l\'identità digitale e la collaborazione degli utenti.',
+    'tl3-loc':            'Bari, Italia',
+    'tl3-prose':          'Il mio percorso in Auriga è iniziato come Software Tester su software ATM bancario sviluppato in <strong>Java</strong>. Un ruolo che ha affinato l\'approccio analitico e la mentalità difensiva che oggi applico all\'infrastruttura: identificare i punti di rottura prima che lo faccia la produzione. Ho validato requisiti <strong>funzionali e di sicurezza</strong>, contribuendo alla qualità di sistemi che gestiscono transazioni finanziarie reali.',
+    'tl4-date':           '2018 — presente',
+    'tl4-role':           'Laurea in Informatica',
+    'tl4-prose':          'Percorso accademico in <strong>Informatica per la Comunicazione Digitale (L-31)</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2025</strong>.',
+    'tl5-role':           'Diploma Scientifico',
+    'tl5-prose':          'Curriculum <strong>Scienze Applicate</strong> con primo approccio strutturato a matematica, fisica e informatica — la scintilla che ha orientato tutto il percorso successivo verso la tecnologia.',
+    'sec-certs':          '// Certificazioni',
+    'sec-projects':       '// Progetti &amp; Interessi',
+    'proj-homelab':       'Raspberry Pi, Home Assistant, Docker, automazioni IoT in ambiente domestico',
+    'proj-nefta':         'Startup NFC smart tag per scheduling B2B tramite tag programmabili',
+    'proj-3d':            'Stampa 3D applicata a prototipi e componenti personalizzati',
+    'proj-flutter':       'Sviluppo app cross-platform Android &amp; iOS con Flutter',
+    'proj-nas':           'NAS self-hosted con accesso remoto sicuro via VPN',
+    'sec-langs':          '// Lingue',
+    'lang-it-level':      'Madrelingua',
+    'footer-sub':         'System Administrator · Bari, Italia'
+  },
+  en: {
+    'nav-exp':            'Experience',
+    'nav-projects':       'Projects',
+    'hero-tag':           'System Administrator · Bari, Italy',
+    'hero-bio':           'Analytical problem solver with a passion for critical infrastructure. I work with enterprise Linux environments, virtualization, Kubernetes and software-defined networking — always focused on reliability and automation.',
+    'hero-card-label':    'Current position',
+    'stat-anni':          'IT Years',
+    'sec-skills':         '// Skills',
+    'cat-os':             'Operating Systems',
+    'cat-os-count':       '5 technologies',
+    'cat-cloud':          'Virtualization &amp; Cloud',
+    'cat-cloud-count':    '5 technologies',
+    'cat-containers':     'Containers &amp; DevOps',
+    'cat-containers-count':'2 technologies',
+    'cat-net':            'Networking',
+    'cat-net-count':      '5 technologies',
+    'cat-db':             'Database',
+    'cat-db-count':       '3 technologies',
+    'cat-mon':            'Monitoring &amp; Backup',
+    'cat-mon-count':      '3 technologies',
+    'cat-script':         'Scripting',
+    'cat-script-count':   '3 languages',
+    'cat-it':             'IT Administration',
+    'cat-it-count':       '3 technologies',
+    'sec-exp':            '// Experience &amp; Education',
+    'tl1-date':           '2025 — Present',
+    'tl1-loc':            'Bari, Italy',
+    'tl1-prose':          'At Deda Cle I took on the operational management of enterprise IT infrastructures serving the Puglia public administration — including <strong>pagoPA/MyPay</strong> systems for the Regione Puglia. My daily work involves <strong>multi-node Kubernetes clusters in production</strong>, handling complex troubleshooting while ensuring service continuity. The entire virtualization infrastructure is based on <strong>VMware with NSX-T networking</strong>, which I administer for micro-perimeter network segmentation. On the data side, I manage <strong>PostgreSQL</strong> with streaming replication and performance tuning, while for data resilience I rely on <strong>Veeam and Vinchin</strong>. Proactive monitoring via <strong>Zabbix</strong> and systematic <strong>SSL/TLS</strong> certificate management complete the scope of responsibility.',
+    'tl2-loc':            'Bari, Italy',
+    'tl2-prose':          'At Auriga I consolidated the foundations of my sysadmin profile, managing a mixed <strong>Windows and Linux VM fleet on VMware</strong> in a high-availability banking environment. I designed and maintained backup strategies with <strong>Veeam</strong>, developed automation solutions in <strong>PowerShell, Python, and Bash</strong> to reduce repetitive tasks and increase configuration consistency. On the security side, I implemented <strong>enterprise antispam</strong> solutions and contributed to the company\'s cybersecurity posture. I fully managed the Microsoft ecosystem: <strong>Active Directory, Exchange, and Office 365</strong>, ensuring digital identity and user collaboration.',
+    'tl3-loc':            'Bari, Italy',
+    'tl3-prose':          'My journey at Auriga began as a Software Tester on banking ATM software developed in <strong>Java</strong>. A role that honed the analytical approach and defensive mindset that I now apply to infrastructure: identifying breaking points before production does. I validated <strong>functional and security requirements</strong>, contributing to the quality of systems that handle real financial transactions.',
+    'tl4-date':           '2018 — present',
+    'tl4-role':           'Computer Science Degree',
+    'tl4-prose':          'Academic path in <strong>Computer Science for Digital Communication (L-31)</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Expected completion <strong>October 2025</strong>.',
+    'tl5-role':           'Scientific Diploma',
+    'tl5-prose':          '<strong>Applied Sciences</strong> curriculum with a first structured approach to mathematics, physics, and computer science — the spark that directed all subsequent paths toward technology.',
+    'sec-certs':          '// Certifications',
+    'sec-projects':       '// Projects &amp; Interests',
+    'proj-homelab':       'Raspberry Pi, Home Assistant, Docker, IoT automations in home environment',
+    'proj-nefta':         'NFC smart tag startup for B2B scheduling via programmable tags',
+    'proj-3d':            '3D printing applied to prototypes and custom components',
+    'proj-flutter':       'Cross-platform Android &amp; iOS app development with Flutter',
+    'proj-nas':           'Self-hosted NAS with secure remote access via VPN',
+    'sec-langs':          '// Languages',
+    'lang-it-level':      'Native',
+    'footer-sub':         'System Administrator · Bari, Italy'
+  }
+};
+
+let currentLang = 'it';
+
+function applyLang(lang) {
+  const dict = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  document.getElementById('page-root').lang = lang;
+  document.getElementById('lang-toggle').textContent = lang === 'it' ? '🌐 EN' : '🌐 IT';
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'it' ? 'en' : 'it';
+  applyLang(currentLang);
+  // reset typing effect
+  pi = 0; ci = 0; deleting = false;
+}
+
+/* ── Typing effect ── */
+const phrases = {
+  it: ['System Administrator Certificato', 'Infrastructure Engineer', 'DevOps Engineer', 'Linux Administrator', 'Kubernetes Operator', 'Flutter App Developer', 'Problem Solver'],
+  en: ['Certified System Administrator', 'Infrastructure Engineer', 'DevOps Engineer', 'Linux Administrator', 'Kubernetes Operator', 'Flutter App Developer', 'Problem Solver']
+};
+let pi = 0, ci = 0, deleting = false;
+const typedEl = document.getElementById('typed');
+
+function type() {
+  const word = phrases[currentLang][pi % phrases[currentLang].length];
+  if (!deleting) {
+    typedEl.textContent = word.slice(0, ++ci);
+    if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    typedEl.textContent = word.slice(0, --ci);
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases[currentLang].length; }
+  }
+  setTimeout(type, deleting ? 40 : 80);
+}
+type();
+
+/* ── IntersectionObserver — scroll reveal ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.skill-card, .tl-left, .tl-right, .fade-up, .proj-card').forEach(el => io.observe(el));
+
+document.querySelectorAll('.skill-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
+document.querySelectorAll('.proj-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+</script>
+</body>
+</html>
