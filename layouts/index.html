@@ -189,9 +189,75 @@
     nav { padding: 0 20px; }
     .container { padding: 0 20px; }
   }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--cyan), rgba(0,188,212,0.4));
+    z-index: 200; transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(0,188,212,0.6);
+  }
+
+  /* ── BACK TO TOP ── */
+  #btt {
+    position: fixed; bottom: 32px; right: 32px; z-index: 150;
+    width: 40px; height: 40px; border-radius: 8px;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--cyan); font-size: 18px; cursor: pointer;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+  }
+  #btt.show { opacity: 1; pointer-events: auto; }
+  #btt:hover { border-color: var(--cyan); box-shadow: var(--cyan-glow); transform: translateY(-2px); }
+
+  /* ── NAV SLIDE-DOWN (page load) ── */
+  @keyframes navSlideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  nav { animation: navSlideDown 0.5s ease 0.1s both; }
+
+  /* ── HERO ENTRANCE (staggered fade-up) ── */
+  @keyframes heroEnter { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-tag      { animation: heroEnter 0.6s ease 0.3s both; }
+  h1             { animation: heroEnter 0.6s ease 0.45s both; }
+  .hero-subtitle { animation: heroEnter 0.6s ease 0.6s both; }
+  .hero-bio      { animation: heroEnter 0.6s ease 0.75s both; }
+  .hero-links    { animation: heroEnter 0.6s ease 0.9s both; }
+  .hero-right    { animation: heroEnter 0.7s ease 0.5s both; }
+
+  /* ── PHOTO FLOAT ── */
+  @keyframes photoFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .hero-photo-wrap { animation: photoFloat 4s ease-in-out infinite; }
+
+  /* ── TIMELINE DOT PULSE RING ── */
+  @keyframes dotPulse {
+    0%   { box-shadow: 0 0 10px var(--cyan), 0 0 0 0 rgba(0,188,212,0.6); }
+    70%  { box-shadow: 0 0 10px var(--cyan), 0 0 0 12px rgba(0,188,212,0); }
+    100% { box-shadow: 0 0 10px var(--cyan), 0 0 0 0 rgba(0,188,212,0); }
+  }
+  .tl-dot:not(.edu) { animation: dotPulse 2.5s ease-out infinite; }
+
+  /* ── SECTION HEADER LINE DRAW ── */
+  .sec-header::after { transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease 0.2s; }
+  .sec-header.line-drawn::after { transform: scaleX(1); }
+
+  /* ── CERT BADGE GLOW PULSE ── */
+  @keyframes certGlow {
+    0%,100% { box-shadow: 0 0 20px rgba(0,188,212,0.4); }
+    50%     { box-shadow: 0 0 40px rgba(0,188,212,0.85), 0 0 80px rgba(0,188,212,0.3); }
+  }
+  .cert-badge { animation: certGlow 3s ease-in-out infinite; }
+
+  /* ── SCROLL SPY ── */
+  nav ul a.active { color: var(--cyan); }
+
+  /* ── STAR POP ── */
+  @keyframes starPop { 0% { transform: scale(0); opacity: 0; } 70% { transform: scale(1.25); } 100% { transform: scale(1); opacity: 1; } }
+  .star.on.popped { animation: starPop 0.35s ease both; }
 </style>
 </head>
 <body>
+<div id="progress-bar"></div>
 
 <!-- ── NAV ── -->
 <nav>
@@ -553,6 +619,8 @@
   <span style="font-family:var(--mono);font-size:11px;color:rgba(0,188,212,0.4);" data-i18n="footer-sub">System Administrator · Bari, Italia</span>
 </footer>
 
+<button id="btt" aria-label="Torna su">↑</button>
+
 <script>
 /* ── i18n ── */
 const translations = {
@@ -705,6 +773,58 @@ document.querySelectorAll('.skill-card, .tl-left, .tl-right, .fade-up, .proj-car
 
 document.querySelectorAll('.skill-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
 document.querySelectorAll('.proj-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+
+/* ── Progress bar ── */
+const pb = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  pb.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+}, { passive: true });
+
+/* ── Back to top ── */
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('show', window.scrollY > 400);
+}, { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ── Section header line draw ── */
+const lineIo = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('line-drawn'); lineIo.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('.sec-header').forEach(el => lineIo.observe(el));
+
+/* ── Scroll spy ── */
+const spyIo = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    const link = document.querySelector('nav ul a[href="#' + e.target.id + '"]');
+    if (link) link.classList.toggle('active', e.isIntersecting);
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('section[id]').forEach(s => spyIo.observe(s));
+
+/* ── Stat counter ── */
+document.querySelectorAll('.stat .n').forEach(el => {
+  const raw = el.textContent.trim();
+  const num = parseInt(raw);
+  if (isNaN(num)) return;
+  const suffix = raw.replace(/[0-9]/g, '');
+  el.textContent = '0' + suffix;
+  const obs = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    obs.disconnect();
+    let cur = 0;
+    const step = () => { cur = Math.min(cur + 1, num); el.textContent = cur + suffix; if (cur < num) requestAnimationFrame(step); };
+    step();
+  }, { threshold: 0.8 });
+  obs.observe(el);
+});
+
+/* ── Stars stagger pop ── */
+document.querySelectorAll('.star.on').forEach((star, i) => {
+  star.style.animationDelay = (i * 0.07) + 's';
+  star.classList.add('popped');
+});
 </script>
 </body>
 </html>
