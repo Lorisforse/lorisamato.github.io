@@ -84,10 +84,8 @@
   .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); min-width: 200px; }
   .hero-card .label { color: var(--cyan); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
   .hero-card .val { color: var(--text); font-size: 13px; }
-  .stat-row { display: flex; justify-content: space-between; gap: 16px; margin-top: 4px; }
-  .stat { text-align: center; }
-  .stat .n { font-size: 20px; font-weight: 700; color: var(--cyan); display: block; }
-  .stat .l { font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-tech-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .hero-badge { font-family: var(--mono); font-size: 11px; padding: 5px 13px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.35); background: rgba(0,188,212,0.08); color: var(--cyan); letter-spacing: 0.04em; }
 
   /* ── SECTION HEADER ── */
   .sec-header { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; }
@@ -319,10 +317,11 @@
         <div style="color:var(--cyan);font-size:11px;margin-top:2px;">@ Deda Cle · 2025–present</div>
       </div>
       <div class="hero-card">
-        <div class="stat-row">
-          <div class="stat"><span class="n">7+</span><span class="l" data-i18n="stat-anni">Anni IT</span></div>
-          <div class="stat"><span class="n">3+</span><span class="l">Anni SA</span></div>
-          <div class="stat"><span class="n">1</span><span class="l">RHCSA</span></div>
+        <div class="label" data-i18n="hero-card-tech">Tecnologie chiave</div>
+        <div class="hero-tech-badges">
+          <span class="hero-badge">Kubernetes</span>
+          <span class="hero-badge">Red Hat</span>
+          <span class="hero-badge">Database</span>
         </div>
       </div>
     </div>
@@ -507,9 +506,9 @@
       <div class="tl-left">
         <div class="tl-content left-side">
           <div class="tl-date" data-i18n="tl4-date">2018 — presente</div>
-          <div class="tl-role" data-i18n="tl4-role">Laurea in Informatica</div>
+          <div class="tl-role" data-i18n="tl4-role">Laurea Triennale ITPS</div>
           <div class="tl-company"><em>Università degli Studi di Bari</em><span class="loc">Bari</span></div>
-          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>INTP</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2026</strong>.</p>
+          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2026</strong>.</p>
           <div class="tl-tags">
             <span class="tl-tag">Java</span><span class="tl-tag">C</span>
             <span class="tl-tag">Python</span><span class="tl-tag">Android</span><span class="tl-tag">MySQL</span>
@@ -626,7 +625,7 @@ const translations = {
     'hero-tag':           'System Administrator · Bari, Italia',
     'hero-bio':           'System Administrator con esperienza nella gestione di infrastrutture IT in ambienti di produzione. Il mio percorso professionale, che spazia dal software testing fino alla gestione di sistemi complessi, mi ha permesso di sviluppare un approccio analitico e orientato alla risoluzione dei problemi. Appassionato delle sfide tecnologiche, sono costantemente impegnato nell\'apprendimento e nell\'applicazione delle ultime tecnologie',
     'hero-card-label':    'Posizione attuale',
-    'stat-anni':          'Anni IT',
+    'hero-card-tech':     'Tecnologie chiave',
     'sec-skills':         '// Competenze',
     'cat-os':             'Sistemi Operativi',
     'cat-os-count':       '5 tecnologie',
@@ -653,8 +652,8 @@ const translations = {
     'tl3-loc':            'Bari, Italia',
     'tl3-prose':          'Il mio percorso in Auriga è iniziato come Software Tester su software ATM bancario sviluppato in <strong>Java</strong>. Un ruolo che ha affinato l\'approccio analitico e la mentalità difensiva che oggi applico all\'infrastruttura: identificare i punti di rottura prima che lo faccia la produzione. Ho validato requisiti <strong>funzionali e di sicurezza</strong>, contribuendo alla qualità di sistemi che gestiscono transazioni finanziarie reali.',
     'tl4-date':           '2018 — presente',
-    'tl4-role':           'Laurea in Informatica',
-    'tl4-prose':          'Percorso accademico in <strong>INTP</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2026</strong>.',
+    'tl4-role':           'Laurea Triennale ITPS',
+    'tl4-prose':          'Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2026</strong>.',
     'tl5-role':           'Diploma Scientifico',
     'tl5-prose':          'Curriculum <strong>Scienze Applicate</strong> con primo approccio strutturato a matematica, fisica e informatica — la scintilla che ha orientato tutto il percorso successivo verso la tecnologia.',
     'sec-certs':          '// Certificazioni',
@@ -674,7 +673,7 @@ const translations = {
     'hero-tag':           'System Administrator · Bari, Italy',
     'hero-bio':           'Analytical problem solver with a passion for critical infrastructure. I work with enterprise Linux environments, virtualization, Kubernetes and software-defined networking — always focused on reliability and automation.',
     'hero-card-label':    'Current position',
-    'stat-anni':          'IT Years',
+    'hero-card-tech':     'Key technologies',
     'sec-skills':         '// Skills',
     'cat-os':             'Operating Systems',
     'cat-os-count':       '5 technologies',
@@ -701,8 +700,8 @@ const translations = {
     'tl3-loc':            'Bari, Italy',
     'tl3-prose':          'My journey at Auriga began as a Software Tester on banking ATM software developed in <strong>Java</strong>. A role that honed the analytical approach and defensive mindset that I now apply to infrastructure: identifying breaking points before production does. I validated <strong>functional and security requirements</strong>, contributing to the quality of systems that handle real financial transactions.',
     'tl4-date':           '2018 — present',
-    'tl4-role':           'Computer Science Degree',
-    'tl4-prose':          'Academic path in <strong>INTP</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Expected completion <strong>October 2026</strong>.',
+    'tl4-role':           'ITPS Degree',
+    'tl4-prose':          'Academic path in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Expected completion <strong>October 2026</strong>.',
     'tl5-role':           'Scientific Diploma',
     'tl5-prose':          '<strong>Applied Sciences</strong> curriculum with a first structured approach to mathematics, physics, and computer science — the spark that directed all subsequent paths toward technology.',
     'sec-certs':          '// Certifications',
@@ -799,27 +798,6 @@ const spyIo = new IntersectionObserver(entries => {
 }, { rootMargin: '-40% 0px -55% 0px' });
 document.querySelectorAll('section[id]').forEach(s => spyIo.observe(s));
 
-/* ── Stat counter ── */
-document.querySelectorAll('.stat .n').forEach(el => {
-  const raw = el.textContent.trim();
-  const num = parseInt(raw);
-  if (isNaN(num)) return;
-  const suffix = raw.replace(/[0-9]/g, '');
-  el.textContent = '0' + suffix;
-  const obs = new IntersectionObserver(entries => {
-    if (!entries[0].isIntersecting) return;
-    obs.disconnect();
-    const duration = 1400;
-    const start = performance.now();
-    const tick = (now) => {
-      const p = Math.min((now - start) / duration, 1);
-      el.textContent = Math.floor(p * num) + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, { threshold: 0.3 });
-  obs.observe(el);
-});
 
 /* ── Stars stagger pop ── */
 document.querySelectorAll('.star.on').forEach((star, i) => {
