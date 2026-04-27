@@ -1,0 +1,19 @@
+baseURL = "https://lorisamato.github.io/"
+languageCode = "it"
+title = "Loris Amato"
+theme = "gokarna"
+
+[params]
+  avatar = "images/avatar.jpg"
+  description = "System Administrator | Kubernetes | Linux | Infrastructure"
+  socialIcons = [
+    { name = "linkedin", url = "https://linkedin.com/in/loris-amato" },
+    { name = "email", url = "mailto:lorisamato97@yahoo.it" }
+  ]
+  footerHTML = "Loris Amato © 2025"
+
+[menu]
+  [[menu.main]]
+    name = "CV"
+    url = "/cv/"
+    weight = 1
