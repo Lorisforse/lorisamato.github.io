@@ -106,9 +106,8 @@
   .skill-cat-name { font-size: 13px; font-weight: 600; color: var(--text-bright); letter-spacing: 0.02em; }
   .skill-cat-count { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.18); background: var(--bg3); color: var(--text-dim); cursor: default; transition: all 0.18s; letter-spacing: 0.02em; }
-  .pill:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 8px rgba(0,188,212,0.35); transform: translateY(-1px); background: var(--cyan-dim); }
-  .pill.hi { border-color: rgba(0,188,212,0.3); color: var(--text); background: rgba(0,188,212,0.06); }
+  .pill { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.28); background: rgba(0,188,212,0.06); color: var(--text); cursor: default; transition: all 0.18s; letter-spacing: 0.02em; }
+  .pill:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 10px rgba(0,188,212,0.45); transform: translateY(-1px); background: var(--cyan-dim); }
 
   /* ── TIMELINE ── */
   #experience { padding: 96px 0; background: var(--bg2); }
@@ -225,9 +224,6 @@
   .hero-links    { animation: heroEnter 0.6s ease 0.9s both; }
   .hero-right    { animation: heroEnter 0.7s ease 0.5s both; }
 
-  /* ── PHOTO FLOAT ── */
-  @keyframes photoFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-  .hero-photo-wrap { animation: photoFloat 4s ease-in-out infinite; }
 
   /* ── TIMELINE DOT PULSE RING ── */
   @keyframes dotPulse {
@@ -325,7 +321,7 @@
       <div class="hero-card">
         <div class="stat-row">
           <div class="stat"><span class="n">7+</span><span class="l" data-i18n="stat-anni">Anni IT</span></div>
-          <div class="stat"><span class="n">3+</span><span class="l">SysAdm</span></div>
+          <div class="stat"><span class="n">3+</span><span class="l">Anni SA</span></div>
           <div class="stat"><span class="n">1</span><span class="l">RHCSA</span></div>
         </div>
       </div>
@@ -465,7 +461,7 @@
           <div class="tl-date" data-i18n="tl1-date">2025 — Presente</div>
           <div class="tl-role">System Administrator</div>
           <div class="tl-company"><em>Deda Cle</em><span class="loc" data-i18n="tl1-loc">Bari, Italia</span></div>
-          <p class="tl-prose" data-i18n="tl1-prose">In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA/MyPay</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.</p>
+          <p class="tl-prose" data-i18n="tl1-prose">In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.</p>
           <div class="tl-tags">
             <span class="tl-tag">Kubernetes</span><span class="tl-tag">VMware</span><span class="tl-tag">NSX-T</span>
             <span class="tl-tag">PostgreSQL</span><span class="tl-tag">Veeam</span><span class="tl-tag">Zabbix</span>
@@ -513,7 +509,7 @@
           <div class="tl-date" data-i18n="tl4-date">2018 — presente</div>
           <div class="tl-role" data-i18n="tl4-role">Laurea in Informatica</div>
           <div class="tl-company"><em>Università degli Studi di Bari</em><span class="loc">Bari</span></div>
-          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>Informatica per la Comunicazione Digitale (L-31)</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2025</strong>.</p>
+          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>INTP</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2026</strong>.</p>
           <div class="tl-tags">
             <span class="tl-tag">Java</span><span class="tl-tag">C</span>
             <span class="tl-tag">Python</span><span class="tl-tag">Android</span><span class="tl-tag">MySQL</span>
@@ -651,14 +647,14 @@ const translations = {
     'sec-exp':            '// Esperienza &amp; Formazione',
     'tl1-date':           '2025 — Presente',
     'tl1-loc':            'Bari, Italia',
-    'tl1-prose':          'In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA/MyPay</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L\'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.',
+    'tl1-prose':          'In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L\'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.',
     'tl2-loc':            'Bari, Italia',
     'tl2-prose':          'In Auriga ho consolidato le fondamenta del mio profilo da sysadmin, gestendo un parco VM misto <strong>Windows e Linux su VMware</strong> in un contesto bancario ad alta disponibilità. Ho progettato e mantenuto le strategie di <strong>backup con Veeam</strong>, sviluppato soluzioni di automazione in <strong>PowerShell, Python e Bash</strong> per ridurre i task ripetitivi e aumentare la coerenza delle configurazioni. Sul fronte sicurezza, ho implementato soluzioni <strong>antispam enterprise</strong> e contribuito alla postura di cybersecurity aziendale. Ho gestito integralmente l\'ecosistema Microsoft: <strong>Active Directory, Exchange e Office 365</strong>, garantendo l\'identità digitale e la collaborazione degli utenti.',
     'tl3-loc':            'Bari, Italia',
     'tl3-prose':          'Il mio percorso in Auriga è iniziato come Software Tester su software ATM bancario sviluppato in <strong>Java</strong>. Un ruolo che ha affinato l\'approccio analitico e la mentalità difensiva che oggi applico all\'infrastruttura: identificare i punti di rottura prima che lo faccia la produzione. Ho validato requisiti <strong>funzionali e di sicurezza</strong>, contribuendo alla qualità di sistemi che gestiscono transazioni finanziarie reali.',
     'tl4-date':           '2018 — presente',
     'tl4-role':           'Laurea in Informatica',
-    'tl4-prose':          'Percorso accademico in <strong>Informatica per la Comunicazione Digitale (L-31)</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2025</strong>.',
+    'tl4-prose':          'Percorso accademico in <strong>INTP</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Conclusione prevista <strong>ottobre 2026</strong>.',
     'tl5-role':           'Diploma Scientifico',
     'tl5-prose':          'Curriculum <strong>Scienze Applicate</strong> con primo approccio strutturato a matematica, fisica e informatica — la scintilla che ha orientato tutto il percorso successivo verso la tecnologia.',
     'sec-certs':          '// Certificazioni',
@@ -699,14 +695,14 @@ const translations = {
     'sec-exp':            '// Experience &amp; Education',
     'tl1-date':           '2025 — Present',
     'tl1-loc':            'Bari, Italy',
-    'tl1-prose':          'At Deda Cle I took on the operational management of enterprise IT infrastructures serving the Puglia public administration — including <strong>pagoPA/MyPay</strong> systems for the Regione Puglia. My daily work involves <strong>multi-node Kubernetes clusters in production</strong>, handling complex troubleshooting while ensuring service continuity. The entire virtualization infrastructure is based on <strong>VMware with NSX-T networking</strong>, which I administer for micro-perimeter network segmentation. On the data side, I manage <strong>PostgreSQL</strong> with streaming replication and performance tuning, while for data resilience I rely on <strong>Veeam and Vinchin</strong>. Proactive monitoring via <strong>Zabbix</strong> and systematic <strong>SSL/TLS</strong> certificate management complete the scope of responsibility.',
+    'tl1-prose':          'At Deda Cle I took on the operational management of enterprise IT infrastructures serving the Puglia public administration — including <strong>pagoPA</strong> systems for the Regione Puglia. My daily work involves <strong>multi-node Kubernetes clusters in production</strong>, handling complex troubleshooting while ensuring service continuity. The entire virtualization infrastructure is based on <strong>VMware with NSX-T networking</strong>, which I administer for micro-perimeter network segmentation. On the data side, I manage <strong>PostgreSQL</strong> with streaming replication and performance tuning, while for data resilience I rely on <strong>Veeam and Vinchin</strong>. Proactive monitoring via <strong>Zabbix</strong> and systematic <strong>SSL/TLS</strong> certificate management complete the scope of responsibility.',
     'tl2-loc':            'Bari, Italy',
     'tl2-prose':          'At Auriga I consolidated the foundations of my sysadmin profile, managing a mixed <strong>Windows and Linux VM fleet on VMware</strong> in a high-availability banking environment. I designed and maintained backup strategies with <strong>Veeam</strong>, developed automation solutions in <strong>PowerShell, Python, and Bash</strong> to reduce repetitive tasks and increase configuration consistency. On the security side, I implemented <strong>enterprise antispam</strong> solutions and contributed to the company\'s cybersecurity posture. I fully managed the Microsoft ecosystem: <strong>Active Directory, Exchange, and Office 365</strong>, ensuring digital identity and user collaboration.',
     'tl3-loc':            'Bari, Italy',
     'tl3-prose':          'My journey at Auriga began as a Software Tester on banking ATM software developed in <strong>Java</strong>. A role that honed the analytical approach and defensive mindset that I now apply to infrastructure: identifying breaking points before production does. I validated <strong>functional and security requirements</strong>, contributing to the quality of systems that handle real financial transactions.',
     'tl4-date':           '2018 — present',
     'tl4-role':           'Computer Science Degree',
-    'tl4-prose':          'Academic path in <strong>Computer Science for Digital Communication (L-31)</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Expected completion <strong>October 2025</strong>.',
+    'tl4-prose':          'Academic path in <strong>INTP</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Expected completion <strong>October 2026</strong>.',
     'tl5-role':           'Scientific Diploma',
     'tl5-prose':          '<strong>Applied Sciences</strong> curriculum with a first structured approach to mathematics, physics, and computer science — the spark that directed all subsequent paths toward technology.',
     'sec-certs':          '// Certifications',
@@ -813,10 +809,15 @@ document.querySelectorAll('.stat .n').forEach(el => {
   const obs = new IntersectionObserver(entries => {
     if (!entries[0].isIntersecting) return;
     obs.disconnect();
-    let cur = 0;
-    const step = () => { cur = Math.min(cur + 1, num); el.textContent = cur + suffix; if (cur < num) requestAnimationFrame(step); };
-    step();
-  }, { threshold: 0.8 });
+    const duration = 1400;
+    const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      el.textContent = Math.floor(p * num) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, { threshold: 0.3 });
   obs.observe(el);
 });
 
