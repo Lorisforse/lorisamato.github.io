@@ -6,12 +6,19 @@ theme = "gokarna"
 [params]
   avatar = "images/avatar.jpg"
   description = "System Administrator | Kubernetes · VMware · Linux · PostgreSQL"
+  accentColor = "#00bcd4"
   metaKeywords = ["sysadmin", "kubernetes", "linux", "devops", "bari"]
   socialIcons = [
     { name = "linkedin", url = "https://linkedin.com/in/loris-amato" },
     { name = "email", url = "mailto:lorisamato97@yahoo.it" }
   ]
   footerHTML = "Loris Amato © 2025"
+  customHeadHTML = '<link rel="stylesheet" href="/css/custom.css">'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [menu]
   [[menu.main]]

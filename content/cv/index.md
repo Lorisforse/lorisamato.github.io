@@ -3,23 +3,36 @@ title: "Curriculum Vitae"
 type: "page"
 ---
 
-## System Administrator
+## Competenze
 
-**Sistemi Operativi:** Windows · Linux (Red Hat · Oracle Linux · Ubuntu)
-
-**Virtualizzazione & Cloud:** VMware · oVirt · AWS · Oracle Cloud · Sangfor
-
-**Container & Orchestration:** Kubernetes · Docker
-
-**Networking & Security:** VMware NSX-T · Firewall · VPN · TCP/IP · DNS · DHCP · NGINX
-
-**Backup & Monitoring:** Veeam · Vinchin · Zabbix
-
-**Automazione & Scripting:** PowerShell · Python · Bash
-
-**Database:** PostgreSQL · Microsoft SQL Server · MySQL
-
-**Amministrazione IT:** Office 365 · Active Directory · Microsoft Exchange
+<div class="skill-pills">
+<span class="skill-pill">Linux</span>
+<span class="skill-pill">Windows</span>
+<span class="skill-pill">Red Hat</span>
+<span class="skill-pill">Oracle Linux</span>
+<span class="skill-pill">Ubuntu</span>
+<span class="skill-pill">VMware</span>
+<span class="skill-pill">oVirt</span>
+<span class="skill-pill">Kubernetes</span>
+<span class="skill-pill">Docker</span>
+<span class="skill-pill">NSX-T</span>
+<span class="skill-pill">Firewall</span>
+<span class="skill-pill">VPN</span>
+<span class="skill-pill">NGINX</span>
+<span class="skill-pill">PostgreSQL</span>
+<span class="skill-pill">MySQL</span>
+<span class="skill-pill">MSSQL</span>
+<span class="skill-pill">Zabbix</span>
+<span class="skill-pill">Veeam</span>
+<span class="skill-pill">Vinchin</span>
+<span class="skill-pill">PowerShell</span>
+<span class="skill-pill">Python</span>
+<span class="skill-pill">Bash</span>
+<span class="skill-pill">Active Directory</span>
+<span class="skill-pill">Office 365</span>
+<span class="skill-pill">AWS</span>
+<span class="skill-pill">Oracle Cloud</span>
+</div>
 
 **Certificazioni:** RHCSA (EX200KV10) — Red Hat Certified System Administrator
 
@@ -27,7 +40,15 @@ Italiano ★★★★★ &nbsp;&nbsp; English ★★★☆☆ (B2)
 
 ---
 
-### 2025 · presente — System Administrator @ *Deda Cle*
+## Esperienza
+
+<div class="timeline">
+
+<div class="timeline-item">
+<span class="timeline-date">2025 · presente</span>
+
+### System Administrator @ *Deda Cle*
+
 **Bari, Puglia, Italia**
 
 Gestione quotidiana di infrastrutture IT critiche in ambienti di produzione multi-datacenter per clienti della pubblica amministrazione (tra cui sistemi pagoPA/MyPay per Regione Puglia).
@@ -40,9 +61,13 @@ Gestione quotidiana di infrastrutture IT critiche in ambienti di produzione mult
 - Monitoraggio infrastruttura con Zabbix: configurazione host, trigger e action
 - Gestione certificati SSL/TLS e truststore per ambienti applicativi Java
 
----
+</div>
 
-### 2022 · 2025 — System Administrator @ *Auriga S.P.A.*
+<div class="timeline-item">
+<span class="timeline-date">2022 · 2025</span>
+
+### System Administrator @ *Auriga S.P.A.*
+
 **Bari, Puglia, Italia**
 
 Amministrazione sistemistica in ambiente enterprise per software bancari (gestione ATM).
@@ -53,9 +78,13 @@ Amministrazione sistemistica in ambiente enterprise per software bancari (gestio
 - Sviluppo script di automazione in PowerShell, Python e Bash per ridurre operazioni manuali ripetitive
 - Supporto e gestione Active Directory, Office 365 e Microsoft Exchange
 
----
+</div>
 
-### 2019 · 2022 — Software Tester @ *Auriga S.P.A.*
+<div class="timeline-item">
+<span class="timeline-date">2019 · 2022</span>
+
+### Software Tester @ *Auriga S.P.A.*
+
 **Bari, Puglia, Italia**
 
 Quality assurance su software per la gestione di ATM bancari.
@@ -64,19 +93,39 @@ Quality assurance su software per la gestione di ATM bancari.
 - Verifica della conformità del software ai requisiti funzionali e di sicurezza
 - Collaborazione con il team di sviluppo per la risoluzione delle anomalie
 
+</div>
+
+</div>
+
 ---
 
-### 2018 · in corso — Informatica ITPS @ *Università degli Studi di Bari Aldo Moro*
+## Formazione
+
+<div class="timeline">
+
+<div class="timeline-item">
+<span class="timeline-date">2018 · in corso</span>
+
+### Informatica ITPS @ *Università degli Studi di Bari Aldo Moro*
+
 **Bari, Puglia, Italia**
 
 Laurea triennale in Informatica. Percorso che ha incluso programmazione in Java, C, Python, sviluppo Android e gestione di database MySQL. In fase di conclusione (prevista Ottobre 2025).
 
----
+</div>
 
-### 2011 · 2016 — Liceo Scientifico @ *Liceo V. Vecchi, Trani*
+<div class="timeline-item">
+<span class="timeline-date">2011 · 2016</span>
+
+### Liceo Scientifico @ *Liceo V. Vecchi, Trani*
+
 **Trani, Puglia, Italia**
 
 Diploma scientifico con indirizzo Scienze Applicate. Primo approccio strutturato alla matematica, fisica e informatica di base.
+
+</div>
+
+</div>
 
 ---
 
