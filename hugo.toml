@@ -13,7 +13,6 @@ theme = "gokarna"
     { name = "email", url = "mailto:lorisamato97@yahoo.it" }
   ]
   footerHTML = "Loris Amato © 2025"
-  customHeadHTML = '<link rel="stylesheet" href="/css/custom.css">'
 
 [markup]
   [markup.goldmark]
