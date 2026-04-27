@@ -5,7 +5,8 @@ theme = "gokarna"
 
 [params]
   avatar = "images/avatar.jpg"
-  description = "System Administrator | Kubernetes | Linux | Infrastructure"
+  description = "System Administrator | Kubernetes · VMware · Linux · PostgreSQL"
+  metaKeywords = ["sysadmin", "kubernetes", "linux", "devops", "bari"]
   socialIcons = [
     { name = "linkedin", url = "https://linkedin.com/in/loris-amato" },
     { name = "email", url = "mailto:lorisamato97@yahoo.it" }
@@ -14,6 +15,10 @@ theme = "gokarna"
 
 [menu]
   [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
     name = "CV"
     url = "/cv/"
-    weight = 1
+    weight = 2
