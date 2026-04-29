@@ -27,7 +27,8 @@
   body::before {
     content: ''; position: fixed; inset: 0;
     background-image: radial-gradient(circle, rgba(0,188,212,0.06) 1px, transparent 1px);
-    background-size: 28px 28px; pointer-events: none; z-index: 0;
+    background-size: 28px 28px; background-position: var(--dot-x, 0px) var(--dot-y, 0px);
+    pointer-events: none; z-index: 0; transition: background-position 0.15s ease-out;
   }
 
   /* ── NAV ── */
@@ -77,7 +78,8 @@
   .hero-link svg { width: 16px; height: 16px; fill: currentColor; }
   .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
   .hero-photo-wrap { position: relative; width: 180px; height: 220px; flex-shrink: 0; margin-bottom: 8px; }
-  .hero-photo-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 16px; background: linear-gradient(135deg, var(--cyan), transparent 60%); z-index: 0; }
+  .hero-photo-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 16px; background: conic-gradient(from 0deg, var(--cyan) 0deg, rgba(0,188,212,0.15) 90deg, transparent 180deg, rgba(0,188,212,0.08) 270deg, var(--cyan) 360deg); z-index: 0; animation: borderSpin 4s linear infinite; }
+  @keyframes borderSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
   .hero-photo-wrap::after { content: ''; position: absolute; inset: 0; border-radius: 14px; box-shadow: 0 0 40px rgba(0,188,212,0.2); z-index: 2; pointer-events: none; }
   .hero-photo { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 14px; overflow: hidden; background: var(--bg3); }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
@@ -106,6 +108,10 @@
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
   .pill { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.28); background: rgba(0,188,212,0.06); color: var(--text); cursor: default; transition: all 0.18s; letter-spacing: 0.02em; }
   .pill:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 10px rgba(0,188,212,0.45); transform: translateY(-1px); background: var(--cyan-dim); }
+  .pill { position: relative; overflow: hidden; }
+  .pill::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,188,212,0.35), transparent); }
+  .pill:hover::after { animation: pillScan 0.35s ease forwards; }
+  @keyframes pillScan { from { left: -60%; } to { left: 120%; } }
 
   /* ── TIMELINE ── */
   #experience { padding: 96px 0; background: var(--bg2); }
@@ -131,6 +137,8 @@
   .tl-content.left-side .tl-tags { justify-content: flex-end; }
   .tl-content.left-side { text-align: right; }
   .tl-tag { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 3px; border: 1px solid var(--border); color: var(--text-dim); background: var(--surface); }
+  .tl-tags .tl-tag { opacity: 0; transform: translateX(-8px); transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s, border-color 0.2s; }
+  .tl-left.visible .tl-tags .tl-tag, .tl-right.visible .tl-tags .tl-tag { opacity: 1; transform: translateX(0); }
   .tl-empty { padding-bottom: 64px; }
 
   /* ── CERTS ── */
@@ -352,7 +360,7 @@
 
       <div class="skill-card">
         <div class="skill-card-head">
-          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg></div>
+          <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M6.5 20q-2.275 0-3.887-1.575Q1 16.85 1 14.575q0-1.95 1.175-3.475Q3.35 9.575 5.25 9.1q.525-2.35 2.4-3.725T12 4q2.925 0 4.963 1.988Q19 7.975 19 10.9q1.725.2 2.863 1.487Q23 13.675 23 15.4q0 1.9-1.337 3.25Q20.325 20 18.4 20Z"/></svg></div>
           <div>
             <div class="skill-cat-name" data-i18n="cat-cloud">Virtualizzazione &amp; Cloud</div>
             <div class="skill-cat-count" data-i18n="cat-cloud-count">5 tecnologie</div>
@@ -779,6 +787,13 @@ document.querySelectorAll('.skill-card, .tl-left, .tl-right, .fade-up, .proj-car
 document.querySelectorAll('.skill-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
 document.querySelectorAll('.proj-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
 
+/* ── Timeline tag stagger ── */
+document.querySelectorAll('.tl-left, .tl-right').forEach(col => {
+  col.querySelectorAll('.tl-tag').forEach((tag, i) => {
+    tag.style.transitionDelay = (0.35 + i * 0.06) + 's';
+  });
+});
+
 /* ── Progress bar ── */
 const pb = document.getElementById('progress-bar');
 window.addEventListener('scroll', () => {
@@ -814,6 +829,18 @@ document.querySelectorAll('.star.on').forEach((star, i) => {
   star.style.animationDelay = (i * 0.07) + 's';
   star.classList.add('popped');
 });
+
+/* ── Dot grid parallax ── */
+let dotRaf = null;
+document.addEventListener('mousemove', e => {
+  if (dotRaf) return;
+  dotRaf = requestAnimationFrame(() => {
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    document.documentElement.style.setProperty('--dot-x', (((e.clientX - cx) / cx) * -12).toFixed(1) + 'px');
+    document.documentElement.style.setProperty('--dot-y', (((e.clientY - cy) / cy) * -12).toFixed(1) + 'px');
+    dotRaf = null;
+  });
+}, { passive: true });
 </script>
 </body>
 </html>
