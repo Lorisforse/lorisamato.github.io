@@ -140,3 +140,9 @@ Diploma scientifico con indirizzo Scienze Applicate. Primo approccio strutturato
 **Sviluppo Android** — Sviluppo app Android amatoriale
 
 **NAS & VPN casalinghe** — Gestione storage e accesso remoto sicuro alla rete di casa
+
+---
+
+## Progetti Open Source
+
+**[Arkanoid Remake](https://github.com/Lorisforse/Arkanoid_remake)** — Remake Android del classico arcade Arkanoid, sviluppato in Java. Livelli di difficoltà incrementale, editor livelli personalizzato, modalità multiplayer online, supporto multilingua e doppia modalità di input. APK disponibile.
