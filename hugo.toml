@@ -2,6 +2,7 @@ baseURL = "https://lorisamato.it/"
 languageCode = "it"
 title = "Loris Amato"
 theme = "gokarna"
+disableKinds = ["taxonomy", "term", "section", "RSS"]
 
 [params]
   avatar = "images/avatar.jpg"
