@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it" id="page-root">
 <head>
 <meta charset="UTF-8">
@@ -87,6 +87,10 @@
   .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); min-width: 200px; }
   .hero-card .label { color: var(--cyan); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
   .hero-card .val { color: var(--text); font-size: 13px; }
+  .stat-row { display: flex; justify-content: space-between; gap: 16px; margin-top: 4px; }
+  .stat { text-align: center; }
+  .stat .n { font-size: 20px; font-weight: 700; color: var(--cyan); display: block; }
+  .stat .l { font-size: 10px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
   .hero-tech-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
   .hero-badge { font-family: var(--mono); font-size: 11px; padding: 5px 13px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.35); background: rgba(0,188,212,0.08); color: var(--cyan); letter-spacing: 0.04em; }
 
@@ -115,7 +119,7 @@
   @keyframes pillScan { from { left: -60%; } to { left: 120%; } }
 
   /* ── TIMELINE ── */
-  #experience { padding: 96px 0; background: var(--bg2); }
+  #experience { padding: 96px 0; }
   .timeline { position: relative; display: grid; grid-template-columns: 1fr 40px 1fr; row-gap: 0; }
   .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); background: linear-gradient(to bottom, var(--cyan) 0%, rgba(0,188,212,0.1) 100%); }
   .tl-left, .tl-right { padding: 0 32px 64px; opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; }
@@ -143,7 +147,7 @@
   .tl-empty { padding-bottom: 64px; }
 
   /* ── CERTS ── */
-  #certs { padding: 96px 0; }
+  #certs { padding: 96px 0; background: var(--bg2); }
   .cert-card { display: inline-flex; align-items: center; gap: 20px; background: var(--surface); border: 1px solid rgba(0,188,212,0.3); border-radius: 12px; padding: 24px 32px; box-shadow: 0 0 32px rgba(0,188,212,0.08); }
   .cert-badge { width: 56px; height: 56px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #00bcd4 0%, #006978 100%); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 700; color: #fff; text-align: center; line-height: 1.2; flex-shrink: 0; box-shadow: 0 0 20px rgba(0,188,212,0.4); }
   .cert-name { font-size: 17px; font-weight: 600; color: var(--text-bright); margin-bottom: 4px; }
@@ -152,7 +156,7 @@
 
   /* ── PROJECTS ── */
   #projects { padding: 96px 0; background: var(--bg2); }
-  .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
   .proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s; cursor: default; }
   .proj-card.visible { opacity: 1; transform: translateY(0); }
   .proj-card:hover { border-color: var(--cyan); transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 16px rgba(0,188,212,0.1); }
@@ -273,9 +277,9 @@
   </div>
   <ul>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects" data-i18n="nav-projects">Progetti</a></li>
     <li><a href="#experience" data-i18n="nav-exp">Esperienza</a></li>
     <li><a href="#certs">Certs</a></li>
-    <li><a href="#projects" data-i18n="nav-projects">Progetti</a></li>
   </ul>
   <div class="nav-right">
     <button id="lang-toggle" onclick="toggleLang()">🌐 EN</button>
@@ -325,6 +329,13 @@
         <div class="label" data-i18n="hero-card-label">Posizione attuale</div>
         <div class="val">System Administrator</div>
         <div style="color:var(--cyan);font-size:11px;margin-top:2px;">@ Deda Cle · 2025–present</div>
+      </div>
+      <div class="hero-card">
+        <div class="stat-row">
+          <div class="stat"><span class="n">7+</span><span class="l">Anni IT</span></div>
+          <div class="stat"><span class="n">3+</span><span class="l">SysAdm</span></div>
+          <div class="stat"><span class="n">1</span><span class="l">RHCSA</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -452,6 +463,54 @@
   </div>
 </section>
 
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-projects">// Progetti &amp; Interessi</h2></div>
+    <div class="project-grid">
+      <div class="proj-card">
+        <div class="proj-icon">🏠</div>
+        <div class="proj-title">Homelab</div>
+        <div class="proj-desc" data-i18n="proj-homelab">Raspberry Pi, Home Assistant, Docker, automazioni IoT in ambiente domestico</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🏷</div>
+        <div class="proj-title">Nefta</div>
+        <div class="proj-desc" data-i18n="proj-nefta">Startup NFC smart tag per scheduling B2B tramite tag programmabili</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">🖨</div>
+        <div class="proj-title">3D Printing</div>
+        <div class="proj-desc" data-i18n="proj-3d">Stampa 3D applicata a prototipi e componenti personalizzati</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">📱</div>
+        <div class="proj-title">Flutter Dev</div>
+        <div class="proj-desc" data-i18n="proj-flutter">Sviluppo app cross-platform Android &amp; iOS con Flutter</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-icon">💾</div>
+        <div class="proj-title">Home NAS &amp; VPN</div>
+        <div class="proj-desc" data-i18n="proj-nas">NAS self-hosted con accesso remoto sicuro via VPN</div>
+      </div>
+      <a href="https://github.com/Lorisforse/Arkanoid_remake" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+      <div class="proj-card" style="cursor:pointer;">
+        <div class="proj-icon">🎮</div>
+        <div class="proj-title">Arkanoid Remake</div>
+        <div class="proj-desc" data-i18n="proj-arkanoid">Remake Android del classico arcade in Java. Livelli personalizzati, multiplayer online, multilingua. APK disponibile su GitHub.</div>
+      </div>
+      </a>
+      <a href="https://github.com/Lorisforse/Olivia-Webapp" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+      <div class="proj-card" style="cursor:pointer;">
+        <div class="proj-icon">🩺</div>
+        <div class="proj-title">Olivia Webapp</div>
+        <div class="proj-desc" data-i18n="proj-olivia">Webapp full-stack per la gestione pazienti e diete, con chatbot AI integrato. FastAPI, React, MongoDB.</div>
+      </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ── TIMELINE ── -->
 <section id="experience">
   <div class="container">
@@ -555,46 +614,7 @@
   </div>
 </section>
 
-<!-- ── PROJECTS ── -->
-<section id="projects">
-  <div class="container">
-    <div class="sec-header"><h2 data-i18n="sec-projects">// Progetti &amp; Interessi</h2></div>
-    <div class="project-grid">
-      <div class="proj-card">
-        <div class="proj-icon">🏠</div>
-        <div class="proj-title">Homelab</div>
-        <div class="proj-desc" data-i18n="proj-homelab">Raspberry Pi, Home Assistant, Docker, automazioni IoT in ambiente domestico</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-icon">🏷</div>
-        <div class="proj-title">Nefta</div>
-        <div class="proj-desc" data-i18n="proj-nefta">Startup NFC smart tag per scheduling B2B tramite tag programmabili</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-icon">🖨</div>
-        <div class="proj-title">3D Printing</div>
-        <div class="proj-desc" data-i18n="proj-3d">Stampa 3D applicata a prototipi e componenti personalizzati</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-icon">📱</div>
-        <div class="proj-title">Flutter Dev</div>
-        <div class="proj-desc" data-i18n="proj-flutter">Sviluppo app cross-platform Android &amp; iOS con Flutter</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-icon">💾</div>
-        <div class="proj-title">Home NAS &amp; VPN</div>
-        <div class="proj-desc" data-i18n="proj-nas">NAS self-hosted con accesso remoto sicuro via VPN</div>
-      </div>
-      <a href="https://github.com/Lorisforse/Arkanoid_remake" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-      <div class="proj-card" style="cursor:pointer;">
-        <div class="proj-icon">🎮</div>
-        <div class="proj-title">Arkanoid Remake</div>
-        <div class="proj-desc" data-i18n="proj-arkanoid">Remake Android del classico arcade in Java. Livelli personalizzati, multiplayer online, multilingua. APK disponibile su GitHub.</div>
-      </div>
-      </a>
-    </div>
-  </div>
-</section>
+
 
 <!-- ── LANGUAGES ── -->
 <section id="languages">
@@ -677,6 +697,7 @@ const translations = {
     'proj-flutter':       'Sviluppo app cross-platform Android &amp; iOS con Flutter',
     'proj-nas':           'NAS self-hosted con accesso remoto sicuro via VPN',
     'proj-arkanoid':      'Remake Android del classico arcade in Java. Livelli personalizzati, multiplayer online, multilingua. APK disponibile su GitHub.',
+    'proj-olivia':        'Webapp full-stack per la gestione pazienti e diete, con chatbot AI integrato. FastAPI, React, MongoDB.',
     'sec-langs':          '// Lingue',
     'lang-it-level':      'Madrelingua',
     'footer-sub':         'System Administrator · Bari, Italia'
@@ -726,6 +747,7 @@ const translations = {
     'proj-flutter':       'Cross-platform Android &amp; iOS app development with Flutter',
     'proj-nas':           'Self-hosted NAS with secure remote access via VPN',
     'proj-arkanoid':      'Android remake of the classic arcade game in Java. Custom levels, online multiplayer, multilanguage. APK available on GitHub.',
+    'proj-olivia':        'Full-stack web app for patient and diet management, with integrated AI chatbot. FastAPI, React, MongoDB.',
     'sec-langs':          '// Languages',
     'lang-it-level':      'Native',
     'footer-sub':         'System Administrator · Bari, Italy'
