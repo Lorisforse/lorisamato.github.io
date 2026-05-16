@@ -151,16 +151,23 @@
   .cert-vendor { font-size: 13px; color: var(--cyan); margin-top: 2px; }
   .cert-id { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
 
-  /* ── PROJECTS ── */
-  #projects { padding: 96px 0; background: var(--bg2); }
-  .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; }
-  .proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s, box-shadow 0.2s; cursor: default; }
-  .proj-card.visible { opacity: 1; transform: translateY(0); }
-  .proj-card:hover { border-color: var(--cyan); transform: translateY(-3px) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.3), 0 0 16px rgba(0,188,212,0.1); }
-  a .proj-card { cursor: pointer; }
-  .proj-icon { font-size: 20px; margin-bottom: 10px; }
-  .proj-title { font-size: 14px; font-weight: 600; color: var(--text-bright); margin-bottom: 6px; }
-  .proj-desc { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+  /* ── PROJECTS — editorial portfolio ── */
+  #projects { padding: 96px 0; background: var(--bg); }
+  .proj-list { display: flex; flex-direction: column; }
+  .proj-row { display: grid; grid-template-columns: 70px 1fr auto; align-items: center; gap: 32px; padding: 30px 0; border-top: 1px solid var(--border); cursor: default; position: relative; opacity: 0; transform: translateY(20px); text-decoration: none; color: inherit; display: grid; }
+  .proj-row.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, padding 0.3s ease, background 0.3s ease; }
+  .proj-row:last-child { border-bottom: 1px solid var(--border); }
+  .proj-row::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--cyan-dim), transparent 70%); opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+  .proj-row:hover { padding-left: 20px; transition: padding 0.3s ease; }
+  .proj-row:hover::before { opacity: 1; }
+  .proj-row:hover .proj-name { color: var(--cyan); }
+  .proj-row:hover .proj-arrow { transform: translateX(6px); opacity: 1; color: var(--cyan); }
+  .proj-num { font-family: var(--mono); font-size: 26px; color: var(--cyan); font-weight: 300; opacity: 0.55; position: relative; z-index: 1; }
+  .proj-info { position: relative; z-index: 1; }
+  .proj-name { font-size: 30px; color: var(--text-bright); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px; transition: color 0.25s ease; }
+  .proj-tag { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+  .proj-meta { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+  .proj-arrow { color: var(--text-dim); font-family: var(--mono); font-size: 22px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease; }
 
   /* ── LANGUAGES ── */
   #languages { padding: 96px 0; }
@@ -194,6 +201,10 @@
     .tl-content.left-side { text-align: left; }
     .tl-content.left-side .tl-company,
     .tl-content.left-side .tl-tags { justify-content: flex-start; }
+    .proj-row { grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; }
+    .proj-meta { display: none; }
+    .proj-name { font-size: 22px; }
+    .proj-num { font-size: 20px; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
     nav { padding: 0 20px; }
     .container { padding: 0 20px; }
@@ -464,47 +475,93 @@
 <!-- ── PROJECTS ── -->
 <section id="projects">
   <div class="container">
-    <div class="sec-header"><h2 data-i18n="sec-projects">// Progetti &amp; Interessi</h2></div>
-    <div class="project-grid">
-      <div class="proj-card">
-        <div class="proj-icon">🏠</div>
-        <div class="proj-title">Homelab</div>
-        <div class="proj-desc" data-i18n="proj-homelab">Raspberry Pi, Home Assistant, Docker, automazioni IoT in ambiente domestico</div>
+    <div class="sec-header"><h2 data-i18n="sec-projects">// Progetti</h2></div>
+    <div class="proj-list">
+
+      <div class="proj-row">
+        <div class="proj-num">01</div>
+        <div class="proj-info">
+          <div class="proj-name">Nefta</div>
+          <div class="proj-tag" data-i18n="proj-tag-nefta">NFC smart tag · scheduling B2B · Flutter + Spring Boot</div>
+        </div>
+        <div class="proj-meta">
+          <span>2024 →</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-icon">🏷</div>
-        <div class="proj-title">Nefta</div>
-        <div class="proj-desc" data-i18n="proj-nefta">Startup NFC smart tag per scheduling B2B tramite tag programmabili</div>
+
+      <div class="proj-row">
+        <div class="proj-num">02</div>
+        <div class="proj-info">
+          <div class="proj-name">Homelab</div>
+          <div class="proj-tag" data-i18n="proj-tag-homelab">Raspberry Pi · Home Assistant · Docker · automazioni IoT</div>
+        </div>
+        <div class="proj-meta">
+          <span data-i18n="proj-year-ongoing">Ongoing</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-icon">🖨</div>
-        <div class="proj-title">3D Printing</div>
-        <div class="proj-desc" data-i18n="proj-3d">Stampa 3D applicata a prototipi e componenti personalizzati</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-icon">📱</div>
-        <div class="proj-title">Flutter Dev</div>
-        <div class="proj-desc" data-i18n="proj-flutter">Sviluppo app cross-platform Android &amp; iOS con Flutter</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-icon">💾</div>
-        <div class="proj-title">Home NAS &amp; VPN</div>
-        <div class="proj-desc" data-i18n="proj-nas">NAS self-hosted con accesso remoto sicuro via VPN</div>
-      </div>
-      <a href="https://github.com/Lorisforse/Arkanoid_remake" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-      <div class="proj-card">
-        <div class="proj-icon">🎮</div>
-        <div class="proj-title">Arkanoid Remake</div>
-        <div class="proj-desc" data-i18n="proj-arkanoid">Remake Android del classico arcade in Java. Livelli personalizzati, multiplayer online, multilingua. APK disponibile su GitHub.</div>
-      </div>
+
+      <a href="https://github.com/Lorisforse/Olivia-Webapp" target="_blank" rel="noopener noreferrer" class="proj-row">
+        <div class="proj-num">03</div>
+        <div class="proj-info">
+          <div class="proj-name">Olivia Webapp</div>
+          <div class="proj-tag" data-i18n="proj-tag-olivia">FastAPI · React · MongoDB · chatbot AI integrato</div>
+        </div>
+        <div class="proj-meta">
+          <span>2024</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </a>
-      <a href="https://github.com/Lorisforse/Olivia-Webapp" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
-      <div class="proj-card">
-        <div class="proj-icon">🩺</div>
-        <div class="proj-title">Olivia Webapp</div>
-        <div class="proj-desc" data-i18n="proj-olivia">Webapp full-stack per la gestione pazienti e diete, con chatbot AI integrato. FastAPI, React, MongoDB.</div>
+
+      <div class="proj-row">
+        <div class="proj-num">04</div>
+        <div class="proj-info">
+          <div class="proj-name">Flutter Apps</div>
+          <div class="proj-tag" data-i18n="proj-tag-flutter">App cross-platform Android &amp; iOS · SAM · Olivia · Nefta</div>
+        </div>
+        <div class="proj-meta">
+          <span data-i18n="proj-year-ongoing">Ongoing</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </div>
+
+      <div class="proj-row">
+        <div class="proj-num">05</div>
+        <div class="proj-info">
+          <div class="proj-name">Home NAS &amp; VPN</div>
+          <div class="proj-tag" data-i18n="proj-tag-nas">Infrastruttura self-hosted · accesso remoto sicuro</div>
+        </div>
+        <div class="proj-meta">
+          <span>2023</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+
+      <a href="https://github.com/Lorisforse/Arkanoid_remake" target="_blank" rel="noopener noreferrer" class="proj-row">
+        <div class="proj-num">06</div>
+        <div class="proj-info">
+          <div class="proj-name">Arkanoid Remake</div>
+          <div class="proj-tag" data-i18n="proj-tag-arkanoid">Android · Java · multiplayer online · multilingua</div>
+        </div>
+        <div class="proj-meta">
+          <span>2023</span>
+          <span class="proj-arrow">→</span>
+        </div>
       </a>
+
+      <div class="proj-row">
+        <div class="proj-num">07</div>
+        <div class="proj-info">
+          <div class="proj-name">3D Printing</div>
+          <div class="proj-tag" data-i18n="proj-tag-3d">Prototipazione · componenti personalizzati · FDM</div>
+        </div>
+        <div class="proj-meta">
+          <span data-i18n="proj-year-hobby">Hobby</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -688,14 +745,16 @@ const translations = {
     'tl5-role':           'Diploma Scientifico',
     'tl5-prose':          'Curriculum <strong>Scienze Applicate</strong> con primo approccio strutturato a matematica, fisica e informatica — la scintilla che ha orientato tutto il percorso successivo verso la tecnologia.',
     'sec-certs':          '// Certificazioni',
-    'sec-projects':       '// Progetti &amp; Interessi',
-    'proj-homelab':       'Raspberry Pi, Home Assistant, Docker, automazioni IoT in ambiente domestico',
-    'proj-nefta':         'Startup NFC smart tag per scheduling B2B tramite tag programmabili',
-    'proj-3d':            'Stampa 3D applicata a prototipi e componenti personalizzati',
-    'proj-flutter':       'Sviluppo app cross-platform Android &amp; iOS con Flutter',
-    'proj-nas':           'NAS self-hosted con accesso remoto sicuro via VPN',
-    'proj-arkanoid':      'Remake Android del classico arcade in Java. Livelli personalizzati, multiplayer online, multilingua. APK disponibile su GitHub.',
-    'proj-olivia':        'Webapp full-stack per la gestione pazienti e diete, con chatbot AI integrato. FastAPI, React, MongoDB.',
+    'sec-projects':       '// Progetti',
+    'proj-tag-nefta':     'NFC smart tag · scheduling B2B · Flutter + Spring Boot',
+    'proj-tag-homelab':   'Raspberry Pi · Home Assistant · Docker · automazioni IoT',
+    'proj-tag-olivia':    'FastAPI · React · MongoDB · chatbot AI integrato',
+    'proj-tag-flutter':   'App cross-platform Android &amp; iOS · SAM · Olivia · Nefta',
+    'proj-tag-nas':       'Infrastruttura self-hosted · accesso remoto sicuro',
+    'proj-tag-arkanoid':  'Android · Java · multiplayer online · multilingua',
+    'proj-tag-3d':        'Prototipazione · componenti personalizzati · FDM',
+    'proj-year-ongoing':  'Ongoing',
+    'proj-year-hobby':    'Hobby',
     'sec-langs':          '// Lingue',
     'lang-it-level':      'Madrelingua',
     'footer-sub':         'System Administrator · Bari, Italia'
@@ -738,14 +797,16 @@ const translations = {
     'tl5-role':           'Scientific Diploma',
     'tl5-prose':          '<strong>Applied Sciences</strong> curriculum with a first structured approach to mathematics, physics, and computer science — the spark that directed all subsequent paths toward technology.',
     'sec-certs':          '// Certifications',
-    'sec-projects':       '// Projects &amp; Interests',
-    'proj-homelab':       'Raspberry Pi, Home Assistant, Docker, IoT automations in home environment',
-    'proj-nefta':         'NFC smart tag startup for B2B scheduling via programmable tags',
-    'proj-3d':            '3D printing applied to prototypes and custom components',
-    'proj-flutter':       'Cross-platform Android &amp; iOS app development with Flutter',
-    'proj-nas':           'Self-hosted NAS with secure remote access via VPN',
-    'proj-arkanoid':      'Android remake of the classic arcade game in Java. Custom levels, online multiplayer, multilanguage. APK available on GitHub.',
-    'proj-olivia':        'Full-stack web app for patient and diet management, with integrated AI chatbot. FastAPI, React, MongoDB.',
+    'sec-projects':       '// Projects',
+    'proj-tag-nefta':     'NFC smart tag · B2B scheduling · Flutter + Spring Boot',
+    'proj-tag-homelab':   'Raspberry Pi · Home Assistant · Docker · IoT automations',
+    'proj-tag-olivia':    'FastAPI · React · MongoDB · integrated AI chatbot',
+    'proj-tag-flutter':   'Cross-platform Android &amp; iOS · SAM · Olivia · Nefta',
+    'proj-tag-nas':       'Self-hosted infrastructure · secure remote access',
+    'proj-tag-arkanoid':  'Android · Java · online multiplayer · multilanguage',
+    'proj-tag-3d':        'Prototyping · custom parts · FDM',
+    'proj-year-ongoing':  'Ongoing',
+    'proj-year-hobby':    'Hobby',
     'sec-langs':          '// Languages',
     'lang-it-level':      'Native',
     'footer-sub':         'System Administrator · Bari, Italy'
@@ -799,10 +860,10 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.skill-card, .tl-left, .tl-right, .fade-up, .proj-card').forEach(el => io.observe(el));
+document.querySelectorAll('.skill-card, .tl-left, .tl-right, .fade-up, .proj-row').forEach(el => io.observe(el));
 
 document.querySelectorAll('.skill-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
-document.querySelectorAll('.proj-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
+document.querySelectorAll('.proj-row').forEach((el, i) => { el.style.transitionDelay = (i * 0.08) + 's'; });
 
 /* ── Timeline tag stagger ── */
 document.querySelectorAll('.tl-left, .tl-right').forEach(col => {
