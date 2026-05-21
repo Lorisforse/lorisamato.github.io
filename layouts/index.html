@@ -109,12 +109,7 @@
   .skill-cat-name { font-size: 13px; font-weight: 600; color: var(--text-bright); letter-spacing: 0.02em; }
   .skill-cat-count { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
   .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.28); background: rgba(0,188,212,0.06); color: var(--text); cursor: default; transition: all 0.18s; letter-spacing: 0.02em; }
-  .pill:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: 0 0 10px rgba(0,188,212,0.45); transform: translateY(-1px); background: var(--cyan-dim); }
-  .pill { position: relative; overflow: hidden; }
-  .pill::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,188,212,0.35), transparent); }
-  .pill:hover::after { animation: pillScan 0.35s ease forwards; }
-  @keyframes pillScan { from { left: -60%; } to { left: 120%; } }
+  .pill { font-family: var(--mono); font-size: 11px; padding: 5px 11px; border-radius: 4px; border: 1px solid rgba(0,188,212,0.18); background: var(--bg3); color: var(--text-dim); cursor: default; letter-spacing: 0.02em; }
 
   /* ── TIMELINE ── */
   #experience { padding: 40px 0; background: var(--bg2); }
