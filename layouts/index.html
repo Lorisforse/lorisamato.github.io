@@ -42,7 +42,7 @@
   }
   .nav-left { display: flex; align-items: center; gap: 12px; }
   .nav-avatar { width: 32px; height: 32px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--cyan); box-shadow: 0 0 8px rgba(0,188,212,0.4); flex-shrink: 0; background: var(--surface); }
-  .nav-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+  .nav-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; mix-blend-mode: multiply; filter: contrast(1.05); }
   .logo { font-family: var(--mono); font-size: 13px; color: var(--cyan); letter-spacing: 0.08em; }
   .logo span { color: var(--text-dim); }
   nav ul { display: flex; gap: 32px; list-style: none; }
@@ -78,9 +78,10 @@
   .hero-link svg { width: 16px; height: 16px; fill: currentColor; }
   .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
   .hero-photo-wrap { position: relative; width: 180px; height: 220px; flex-shrink: 0; margin-bottom: 8px; }
+  .hero-photo-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 16px; background: linear-gradient(135deg, var(--cyan), transparent 60%); z-index: 0; }
   .hero-photo-wrap::after { content: ''; position: absolute; inset: 0; border-radius: 14px; box-shadow: 0 0 40px rgba(0,188,212,0.2); z-index: 2; pointer-events: none; }
   .hero-photo { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 14px; overflow: hidden; background: var(--bg3); }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; mix-blend-mode: multiply; filter: contrast(1.08) brightness(0.95); display: block; }
   .hero-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); min-width: 200px; }
   .hero-card .label { color: var(--cyan); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
   .hero-card .val { color: var(--text); font-size: 13px; }
@@ -286,9 +287,9 @@
   </div>
   <ul>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#certs">Certs</a></li>
     <li><a href="#projects" data-i18n="nav-projects">Progetti</a></li>
     <li><a href="#experience" data-i18n="nav-exp">Esperienza</a></li>
-    <li><a href="#certs">Certs</a></li>
   </ul>
   <div class="nav-right">
     <button id="lang-toggle" onclick="toggleLang()">🌐 EN</button>
@@ -468,6 +469,21 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTS ── -->
+<section id="certs">
+  <div class="container">
+    <div class="sec-header"><h2 data-i18n="sec-certs">// Certificazioni</h2></div>
+    <div class="cert-card fade-up">
+      <div class="cert-badge">RH<br>CSA</div>
+      <div>
+        <div class="cert-name">Red Hat Certified System Administrator</div>
+        <div class="cert-vendor">Red Hat · EX200</div>
+        <div class="cert-id">Exam ID: EX200KV10</div>
+      </div>
     </div>
   </div>
 </section>
@@ -653,22 +669,6 @@
     </div>
   </div>
 </section>
-
-<!-- ── CERTS ── -->
-<section id="certs">
-  <div class="container">
-    <div class="sec-header"><h2 data-i18n="sec-certs">// Certificazioni</h2></div>
-    <div class="cert-card fade-up">
-      <div class="cert-badge">RH<br>CSA</div>
-      <div>
-        <div class="cert-name">Red Hat Certified System Administrator</div>
-        <div class="cert-vendor">Red Hat · EX200</div>
-        <div class="cert-id">Exam ID: EX200KV10</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 
 <!-- ── LANGUAGES ── -->
