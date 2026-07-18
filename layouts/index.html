@@ -162,14 +162,15 @@
   .proj-row:hover { padding-left: 20px; transition: padding 0.3s ease; }
   .proj-row:hover::before { opacity: 1; }
   .proj-row:hover .proj-name { color: var(--cyan); }
-  .proj-row:hover .proj-arrow { transform: translateX(6px); opacity: 1; color: var(--cyan); }
+  .proj-row[href], .proj-row[data-href] { cursor: pointer; }
   .proj-num { font-family: var(--mono); font-size: 26px; color: var(--cyan); font-weight: 300; opacity: 0.55; position: relative; z-index: 1; }
   .proj-info { position: relative; z-index: 1; }
   .proj-name { font-size: 30px; color: var(--text-bright); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px; transition: color 0.25s ease; }
   .proj-tag { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
   .proj-meta { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
-  .proj-arrow { color: var(--text-dim); font-family: var(--mono); font-size: 22px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease; }
-  .proj-arrow[href] { cursor: pointer; text-decoration: none; }
+  .proj-demo-btn { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan); text-decoration: none; padding: 7px 14px; border-radius: 20px; border: 1px solid rgba(0,188,212,0.35); background: rgba(0,188,212,0.08); cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
+  .proj-demo-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+  .proj-demo-btn:hover { border-color: var(--cyan); background: rgba(0,188,212,0.2); box-shadow: 0 0 10px rgba(0,188,212,0.45); }
 
   /* ── LANGUAGES ── */
   #languages { padding: 40px 0 60px; }
@@ -204,7 +205,7 @@
     .tl-content.left-side .tl-company,
     .tl-content.left-side .tl-tags { justify-content: flex-start; }
     .proj-row { grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; }
-    .proj-meta { display: none; }
+    .proj-meta { grid-column: 2; margin-top: 10px; }
     .proj-name { font-size: 22px; }
     .proj-num { font-size: 20px; }
     footer { flex-direction: column; gap: 8px; text-align: center; }
@@ -501,10 +502,6 @@
           <div class="proj-name">Nefta</div>
           <div class="proj-tag" data-i18n="proj-tag-nefta">NFC smart tag · scheduling B2B · Flutter + Spring Boot</div>
         </div>
-        <div class="proj-meta">
-          <span>2024 →</span>
-          <span class="proj-arrow">→</span>
-        </div>
       </div>
 
       <div class="proj-row">
@@ -512,10 +509,6 @@
         <div class="proj-info">
           <div class="proj-name">Homelab</div>
           <div class="proj-tag" data-i18n="proj-tag-homelab">Raspberry Pi · Home Assistant · Docker · automazioni IoT</div>
-        </div>
-        <div class="proj-meta">
-          <span data-i18n="proj-year-ongoing">Ongoing</span>
-          <span class="proj-arrow">→</span>
         </div>
       </div>
 
@@ -525,10 +518,6 @@
           <div class="proj-name">Olivia Webapp</div>
           <div class="proj-tag" data-i18n="proj-tag-olivia">FastAPI · React · MongoDB · chatbot AI integrato</div>
         </div>
-        <div class="proj-meta">
-          <span>2024</span>
-          <span class="proj-arrow">→</span>
-        </div>
       </a>
 
       <div class="proj-row">
@@ -536,10 +525,6 @@
         <div class="proj-info">
           <div class="proj-name">Flutter Apps</div>
           <div class="proj-tag" data-i18n="proj-tag-flutter">App cross-platform Android &amp; iOS · SAM · Olivia · Nefta</div>
-        </div>
-        <div class="proj-meta">
-          <span data-i18n="proj-year-ongoing">Ongoing</span>
-          <span class="proj-arrow">→</span>
         </div>
       </div>
 
@@ -549,10 +534,6 @@
           <div class="proj-name">Home NAS &amp; VPN</div>
           <div class="proj-tag" data-i18n="proj-tag-nas">Infrastruttura self-hosted · accesso remoto sicuro</div>
         </div>
-        <div class="proj-meta">
-          <span>2023</span>
-          <span class="proj-arrow">→</span>
-        </div>
       </div>
 
       <a href="https://github.com/Lorisforse/Arkanoid_remake" target="_blank" rel="noopener noreferrer" class="proj-row">
@@ -560,10 +541,6 @@
         <div class="proj-info">
           <div class="proj-name">Arkanoid Remake</div>
           <div class="proj-tag" data-i18n="proj-tag-arkanoid">Android · Java · multiplayer online · multilingua</div>
-        </div>
-        <div class="proj-meta">
-          <span>2023</span>
-          <span class="proj-arrow">→</span>
         </div>
       </a>
 
@@ -573,21 +550,19 @@
           <div class="proj-name">3D Printing</div>
           <div class="proj-tag" data-i18n="proj-tag-3d">Prototipazione · componenti personalizzati · FDM</div>
         </div>
-        <div class="proj-meta">
-          <span data-i18n="proj-year-hobby">Hobby</span>
-          <span class="proj-arrow">→</span>
-        </div>
       </div>
 
-      <div class="proj-row">
+      <div class="proj-row" data-href="https://github.com/Lorisforse/Ziply-sharing-mobility">
         <div class="proj-num">08</div>
         <div class="proj-info">
           <div class="proj-name">Ziply</div>
           <div class="proj-tag" data-i18n="proj-tag-ziply">Sharing bici, monopattini &amp; auto elettriche · Flutter + Go</div>
         </div>
         <div class="proj-meta">
-          <span>2025</span>
-          <a href="https://ziply.lorisamato.it/" target="_blank" rel="noopener noreferrer" class="proj-arrow" aria-label="Demo Ziply" title="Demo Ziply">→</a>
+          <a href="https://ziply.lorisamato.it/" target="_blank" rel="noopener noreferrer" class="proj-demo-btn" aria-label="Demo Ziply">
+            <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h5v2H5v12h12v-5h2v5a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>
+            Demo
+          </a>
         </div>
       </div>
 
@@ -767,8 +742,6 @@ const translations = {
     'proj-tag-arkanoid':  'Android · Java · multiplayer online · multilingua',
     'proj-tag-3d':        'Prototipazione · componenti personalizzati · FDM',
     'proj-tag-ziply':     'Sharing bici, monopattini &amp; auto elettriche · Flutter + Go',
-    'proj-year-ongoing':  'Ongoing',
-    'proj-year-hobby':    'Hobby',
     'sec-langs':          '// Lingue',
     'lang-it-level':      'Madrelingua',
     'footer-sub':         'System Administrator · Bari, Italia'
@@ -820,8 +793,6 @@ const translations = {
     'proj-tag-arkanoid':  'Android · Java · online multiplayer · multilanguage',
     'proj-tag-3d':        'Prototyping · custom parts · FDM',
     'proj-tag-ziply':     'Bike, e-scooter &amp; e-car sharing · Flutter + Go',
-    'proj-year-ongoing':  'Ongoing',
-    'proj-year-hobby':    'Hobby',
     'sec-langs':          '// Languages',
     'lang-it-level':      'Native',
     'footer-sub':         'System Administrator · Bari, Italy'
@@ -921,6 +892,14 @@ document.querySelectorAll('section[id]').forEach(s => spyIo.observe(s));
 document.querySelectorAll('.star.on').forEach((star, i) => {
   star.style.animationDelay = (i * 0.07) + 's';
   star.classList.add('popped');
+});
+
+/* ── Project cards: click row → repo, demo button → live demo ── */
+document.querySelectorAll('.proj-row[data-href]').forEach(row => {
+  row.addEventListener('click', () => window.open(row.dataset.href, '_blank', 'noopener'));
+});
+document.querySelectorAll('.proj-demo-btn').forEach(btn => {
+  btn.addEventListener('click', e => e.stopPropagation());
 });
 
 /* ── Dot grid parallax ── */
