@@ -6,6 +6,11 @@
 <title>Loris Amato — System Administrator</title>
 <meta name="description" content="Loris Amato — System Administrator specializzato in Linux, Kubernetes, VMware e infrastrutture enterprise. Basato a Bari, Italia.">
 <meta name="keywords" content="sysadmin, kubernetes, linux, vmware, devops, bari, postgresql, rhcsa">
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -164,6 +169,7 @@
   .proj-tag { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
   .proj-meta { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.08em; display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
   .proj-arrow { color: var(--text-dim); font-family: var(--mono); font-size: 22px; opacity: 0.5; transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease; }
+  .proj-arrow[href] { cursor: pointer; text-decoration: none; }
 
   /* ── LANGUAGES ── */
   #languages { padding: 40px 0 60px; }
@@ -573,6 +579,18 @@
         </div>
       </div>
 
+      <div class="proj-row">
+        <div class="proj-num">08</div>
+        <div class="proj-info">
+          <div class="proj-name">Ziply</div>
+          <div class="proj-tag" data-i18n="proj-tag-ziply">Sharing bici, monopattini &amp; auto elettriche · Flutter + Go</div>
+        </div>
+        <div class="proj-meta">
+          <span>2025</span>
+          <a href="https://ziply.lorisamato.it/" target="_blank" rel="noopener noreferrer" class="proj-arrow" aria-label="Demo Ziply" title="Demo Ziply">→</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -748,6 +766,7 @@ const translations = {
     'proj-tag-nas':       'Infrastruttura self-hosted · accesso remoto sicuro',
     'proj-tag-arkanoid':  'Android · Java · multiplayer online · multilingua',
     'proj-tag-3d':        'Prototipazione · componenti personalizzati · FDM',
+    'proj-tag-ziply':     'Sharing bici, monopattini &amp; auto elettriche · Flutter + Go',
     'proj-year-ongoing':  'Ongoing',
     'proj-year-hobby':    'Hobby',
     'sec-langs':          '// Lingue',
@@ -800,6 +819,7 @@ const translations = {
     'proj-tag-nas':       'Self-hosted infrastructure · secure remote access',
     'proj-tag-arkanoid':  'Android · Java · online multiplayer · multilanguage',
     'proj-tag-3d':        'Prototyping · custom parts · FDM',
+    'proj-tag-ziply':     'Bike, e-scooter &amp; e-car sharing · Flutter + Go',
     'proj-year-ongoing':  'Ongoing',
     'proj-year-hobby':    'Hobby',
     'sec-langs':          '// Languages',
