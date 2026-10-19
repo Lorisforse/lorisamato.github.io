@@ -129,10 +129,6 @@
   .tl-dot:hover { transform: scale(1.4); }
   .tl-dot.edu { background: rgba(0,188,212,0.4); box-shadow: none; }
   .tl-date { font-family: var(--mono); font-size: 11px; color: var(--cyan); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
-  .tl-date-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-  .tl-date-row .tl-date { margin-bottom: 0; }
-  .tl-content.left-side .tl-date-row { justify-content: flex-end; }
-  .tl-status { font-family: var(--mono); font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 10px; border: 1px solid var(--cyan); background: rgba(0,188,212,0.14); color: var(--cyan); letter-spacing: 0.04em; white-space: nowrap; }
   .tl-role { font-size: 20px; font-weight: 700; color: var(--text-bright); line-height: 1.2; margin-bottom: 4px; letter-spacing: -0.01em; }
   .tl-company { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .tl-content.left-side .tl-company { justify-content: flex-end; }
@@ -207,8 +203,7 @@
     .tl-empty { display: none; }
     .tl-content.left-side { text-align: left; }
     .tl-content.left-side .tl-company,
-    .tl-content.left-side .tl-tags,
-    .tl-content.left-side .tl-date-row { justify-content: flex-start; }
+    .tl-content.left-side .tl-tags { justify-content: flex-start; }
     .proj-row { grid-template-columns: 40px 1fr; gap: 16px; padding: 22px 0; }
     .proj-meta { grid-column: 2; margin-top: 10px; }
     .proj-name { font-size: 22px; }
@@ -640,10 +635,7 @@
       <!-- 4: left — education -->
       <div class="tl-left">
         <div class="tl-content left-side">
-          <div class="tl-date-row">
-            <div class="tl-date" data-i18n="tl4-date">2018 — 2026</div>
-            <span class="tl-status" data-i18n="tl4-status">✓ Conseguita</span>
-          </div>
+          <div class="tl-date" data-i18n="tl4-date">2018 — 2026</div>
           <div class="tl-role" data-i18n="tl4-role">Laurea Triennale ITPS</div>
           <div class="tl-company"><em>Università degli Studi di Bari</em><span class="loc">Bari</span></div>
           <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Laurea conseguita a <strong>ottobre 2026</strong>.</p>
@@ -742,7 +734,6 @@ const translations = {
     'tl3-loc':            'Bari, Italia',
     'tl3-prose':          'Il mio percorso in Auriga è iniziato come Software Tester su software ATM bancario sviluppato in <strong>Java</strong>. Un ruolo che ha affinato l\'approccio analitico e la mentalità difensiva che oggi applico all\'infrastruttura: identificare i punti di rottura prima che lo faccia la produzione. Ho validato requisiti <strong>funzionali e di sicurezza</strong>, contribuendo alla qualità di sistemi che gestiscono transazioni finanziarie reali.',
     'tl4-date':           '2018 — 2026',
-    'tl4-status':         '✓ Conseguita',
     'tl4-role':           'Laurea Triennale ITPS',
     'tl4-prose':          'Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Laurea conseguita a <strong>ottobre 2026</strong>.',
     'tl5-role':           'Diploma Scientifico',
@@ -794,7 +785,6 @@ const translations = {
     'tl3-loc':            'Bari, Italy',
     'tl3-prose':          'My journey at Auriga began as a Software Tester on banking ATM software developed in <strong>Java</strong>. A role that honed the analytical approach and defensive mindset that I now apply to infrastructure: identifying breaking points before production does. I validated <strong>functional and security requirements</strong>, contributing to the quality of systems that handle real financial transactions.',
     'tl4-date':           '2018 — 2026',
-    'tl4-status':         '✓ Obtained',
     'tl4-role':           'ITPS Degree',
     'tl4-prose':          'Academic path in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Degree obtained in <strong>October 2026</strong>.',
     'tl5-role':           'Scientific Diploma',
