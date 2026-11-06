@@ -81,6 +81,8 @@
   .hero-link { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border: 1px solid var(--border); border-radius: 6px; font-family: var(--mono); font-size: 13px; color: var(--text-dim); text-decoration: none; background: var(--surface); transition: all 0.2s; }
   .hero-link:hover { border-color: var(--cyan); color: var(--cyan); box-shadow: var(--cyan-glow); background: var(--cyan-dim); }
   .hero-link svg { width: 16px; height: 16px; fill: currentColor; }
+  .hero-link.primary { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+  .hero-link.primary:hover { box-shadow: var(--cyan-glow); }
   .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
   .hero-photo-wrap { position: relative; width: 180px; height: 220px; flex-shrink: 0; margin-bottom: 8px; }
   .hero-photo-wrap::before { content: ''; position: absolute; inset: -3px; border-radius: 16px; background: linear-gradient(135deg, var(--cyan), transparent 60%); z-index: 0; }
@@ -171,6 +173,7 @@
   .proj-demo-btn { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cyan); text-decoration: none; padding: 7px 14px; border-radius: 20px; border: 1px solid rgba(0,188,212,0.35); background: rgba(0,188,212,0.08); cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease; }
   .proj-demo-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
   .proj-demo-btn:hover { border-color: var(--cyan); background: rgba(0,188,212,0.2); box-shadow: 0 0 10px rgba(0,188,212,0.45); }
+  .proj-wip-badge { display: flex; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-dim); padding: 7px 14px; border-radius: 20px; border: 1px dashed var(--border); }
 
   /* ── LANGUAGES ── */
   #languages { padding: 40px 0 60px; }
@@ -317,6 +320,10 @@
 		nell'apprendimento e nell'applicazione delle ultime tecnologie
       </p>
       <div class="hero-links">
+        <a href="{{ "cv/loris-amato-cv.pdf" | relURL }}" class="hero-link primary" download>
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          <span data-i18n="download-cv">Scarica CV</span>
+        </a>
         <a href="https://www.linkedin.com/in/loris-amato-570b88198" class="hero-link" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
@@ -340,7 +347,7 @@
       <div class="hero-card">
         <div class="label" data-i18n="hero-card-label">Posizione attuale</div>
         <div class="val">System Administrator</div>
-        <div style="color:var(--cyan);font-size:11px;margin-top:2px;">@ Deda Cle · 2025–present</div>
+        <div style="color:var(--cyan);font-size:11px;margin-top:2px;">@ DedaNext · 2025–present</div>
       </div>
       <div class="hero-card">
         <div class="stat-row">
@@ -384,7 +391,7 @@
         </div>
         <div class="skill-pills">
           <span class="pill hi">VMware</span><span class="pill">oVirt</span>
-          <span class="pill">AWS</span><span class="pill">Oracle Cloud</span><span class="pill">Sangfor</span>
+          <span class="pill">AWS</span><span class="pill">Oracle Cloud</span><span class="pill">Sangfor HCI</span>
         </div>
       </div>
 
@@ -408,13 +415,12 @@
           <div class="skill-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
           <div>
             <div class="skill-cat-name" data-i18n="cat-net">Networking</div>
-            <div class="skill-cat-count" data-i18n="cat-net-count">7 tecnologie</div>
+            <div class="skill-cat-count" data-i18n="cat-net-count">5 tecnologie</div>
           </div>
         </div>
         <div class="skill-pills">
           <span class="pill hi">NSX-T</span><span class="pill">Firewall</span>
           <span class="pill">VPN</span><span class="pill">NGINX</span><span class="pill">TCP/IP</span>
-          <span class="pill">HAProxy</span><span class="pill">Certbot</span>
         </div>
       </div>
 
@@ -502,6 +508,9 @@
           <div class="proj-name">Nefta</div>
           <div class="proj-tag" data-i18n="proj-tag-nefta">NFC smart tag · scheduling B2B · Flutter + Spring Boot</div>
         </div>
+        <div class="proj-meta">
+          <span class="proj-wip-badge" data-i18n="wip-badge">Work in progress</span>
+        </div>
       </div>
 
       <div class="proj-row">
@@ -509,6 +518,9 @@
         <div class="proj-info">
           <div class="proj-name">Homelab</div>
           <div class="proj-tag" data-i18n="proj-tag-homelab">Raspberry Pi · Home Assistant · Docker · automazioni IoT</div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-wip-badge" data-i18n="wip-badge">Work in progress</span>
         </div>
       </div>
 
@@ -532,6 +544,9 @@
           <div class="proj-name">Flutter Apps</div>
           <div class="proj-tag" data-i18n="proj-tag-flutter">App cross-platform Android &amp; iOS · SAM · Olivia · Nefta</div>
         </div>
+        <div class="proj-meta">
+          <span class="proj-wip-badge" data-i18n="wip-badge">Work in progress</span>
+        </div>
       </div>
 
       <div class="proj-row">
@@ -539,6 +554,9 @@
         <div class="proj-info">
           <div class="proj-name">Home NAS &amp; VPN</div>
           <div class="proj-tag" data-i18n="proj-tag-nas">Infrastruttura self-hosted · accesso remoto sicuro</div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-wip-badge" data-i18n="wip-badge">Work in progress</span>
         </div>
       </div>
 
@@ -595,8 +613,8 @@
         <div class="tl-content right-side">
           <div class="tl-date" data-i18n="tl1-date">2025 — Presente</div>
           <div class="tl-role">System Administrator</div>
-          <div class="tl-company"><em>Deda Cle</em><span class="loc" data-i18n="tl1-loc">Bari, Italia</span></div>
-          <p class="tl-prose" data-i18n="tl1-prose">In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.</p>
+          <div class="tl-company"><em>DedaNext</em><span class="loc" data-i18n="tl1-loc">Bari, Italia</span></div>
+          <p class="tl-prose" data-i18n="tl1-prose">In DedaNext ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.</p>
           <div class="tl-tags">
             <span class="tl-tag">Kubernetes</span><span class="tl-tag">VMware</span><span class="tl-tag">NSX-T</span>
             <span class="tl-tag">PostgreSQL</span><span class="tl-tag">Veeam</span><span class="tl-tag">Zabbix</span>
@@ -644,7 +662,7 @@
           <div class="tl-date" data-i18n="tl4-date">2018 — 2026</div>
           <div class="tl-role" data-i18n="tl4-role">Laurea Triennale ITPS</div>
           <div class="tl-company"><em>Università degli Studi di Bari</em><span class="loc">Bari</span></div>
-          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Laurea conseguita a <strong>ottobre 2026</strong>.</p>
+          <p class="tl-prose" data-i18n="tl4-prose">Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Laurea conseguita <strong>nel 2026</strong>.</p>
           <div class="tl-tags">
             <span class="tl-tag">Java</span><span class="tl-tag">C</span>
             <span class="tl-tag">Python</span><span class="tl-tag">Android</span><span class="tl-tag">MySQL</span>
@@ -712,6 +730,7 @@ const translations = {
     'nav-projects':       'Progetti',
     'hero-tag':           'System Administrator · Bari, Italia',
     'hero-bio':           'System Administrator con esperienza nella gestione di infrastrutture IT in ambienti di produzione. Il mio percorso professionale, che spazia dal software testing fino alla gestione di sistemi complessi, mi ha permesso di sviluppare un approccio analitico e orientato alla risoluzione dei problemi. Appassionato delle sfide tecnologiche, sono costantemente impegnato nell\'apprendimento e nell\'applicazione delle ultime tecnologie',
+    'download-cv':        'Scarica CV',
     'hero-card-label':    'Posizione attuale',
     'hero-card-tech':     'Tecnologie chiave',
     'sec-skills':         '// Competenze',
@@ -722,7 +741,7 @@ const translations = {
     'cat-containers':     'Containers &amp; DevOps',
     'cat-containers-count':'7 tecnologie',
     'cat-net':            'Networking',
-    'cat-net-count':      '7 tecnologie',
+    'cat-net-count':      '5 tecnologie',
     'cat-db':             'Database',
     'cat-db-count':       '3 tecnologie',
     'cat-mon':            'Monitoring &amp; Backup',
@@ -734,14 +753,14 @@ const translations = {
     'sec-exp':            '// Esperienza &amp; Formazione',
     'tl1-date':           '2025 — Presente',
     'tl1-loc':            'Bari, Italia',
-    'tl1-prose':          'In Deda Cle ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L\'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.',
+    'tl1-prose':          'In DedaNext ho assunto la gestione operativa di infrastrutture IT enterprise al servizio della pubblica amministrazione pugliese — tra cui i sistemi <strong>pagoPA</strong> della Regione Puglia. Il mio lavoro quotidiano si svolge su <strong>cluster Kubernetes multi-nodo in produzione</strong>, dove affronto troubleshooting complessi garantendo continuità di servizio. L\'intera infrastruttura di virtualizzazione è basata su <strong>VMware con networking NSX-T</strong>, che amministro per la segmentazione micro-perimetrale delle reti. Sul fronte dati, curo <strong>PostgreSQL</strong> con replica streaming e performance tuning, mentre per la resilienza del dato mi affido a <strong>Veeam e Vinchin</strong>. Il monitoraggio proattivo via <strong>Zabbix</strong> e la gestione sistematica dei certificati <strong>SSL/TLS</strong> completano il perimetro di responsabilità.',
     'tl2-loc':            'Bari, Italia',
     'tl2-prose':          'In Auriga ho consolidato le fondamenta del mio profilo da sysadmin, gestendo un parco VM misto <strong>Windows e Linux su VMware</strong> in un contesto bancario ad alta disponibilità. Ho progettato e mantenuto le strategie di <strong>backup con Veeam</strong>, sviluppato soluzioni di automazione in <strong>PowerShell, Python e Bash</strong> per ridurre i task ripetitivi e aumentare la coerenza delle configurazioni. Sul fronte sicurezza, ho implementato soluzioni <strong>antispam enterprise</strong> e contribuito alla postura di cybersecurity aziendale. Ho gestito integralmente l\'ecosistema Microsoft: <strong>Active Directory, Exchange e Office 365</strong>, garantendo l\'identità digitale e la collaborazione degli utenti.',
     'tl3-loc':            'Bari, Italia',
     'tl3-prose':          'Il mio percorso in Auriga è iniziato come Software Tester su software ATM bancario sviluppato in <strong>Java</strong>. Un ruolo che ha affinato l\'approccio analitico e la mentalità difensiva che oggi applico all\'infrastruttura: identificare i punti di rottura prima che lo faccia la produzione. Ho validato requisiti <strong>funzionali e di sicurezza</strong>, contribuendo alla qualità di sistemi che gestiscono transazioni finanziarie reali.',
     'tl4-date':           '2018 — 2026',
     'tl4-role':           'Laurea Triennale ITPS',
-    'tl4-prose':          'Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Laurea conseguita a <strong>ottobre 2026</strong>.',
+    'tl4-prose':          'Percorso accademico in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, con focus su programmazione orientata agli oggetti, sistemi operativi e sviluppo mobile. Il corso ha rafforzato le basi teoriche su algoritmi, reti e basi di dati, fornendo il framework concettuale che supporta il lavoro pratico quotidiano. Laurea conseguita <strong>nel 2026</strong>.',
     'tl5-role':           'Diploma Scientifico',
     'tl5-prose':          'Curriculum <strong>Scienze Applicate</strong> con primo approccio strutturato a matematica, fisica e informatica — la scintilla che ha orientato tutto il percorso successivo verso la tecnologia.',
     'sec-certs':          '// Certificazioni',
@@ -754,6 +773,7 @@ const translations = {
     'proj-tag-arkanoid':  'Android · Java · multiplayer online · multilingua',
     'proj-tag-3d':        'Prototipazione · componenti personalizzati · FDM',
     'proj-tag-ziply':     'Sharing bici, monopattini &amp; auto elettriche · Flutter + Go',
+    'wip-badge':          'Work in progress',
     'sec-langs':          '// Lingue',
     'lang-it-level':      'Madrelingua',
     'footer-sub':         'System Administrator · Bari, Italia'
@@ -763,6 +783,7 @@ const translations = {
     'nav-projects':       'Projects',
     'hero-tag':           'System Administrator · Bari, Italy',
     'hero-bio':           'System Administrator with experience managing IT infrastructure in production environments. My professional journey, spanning from software testing to the management of complex systems, has allowed me to develop an analytical and problem-oriented approach. Passionate about technological challenges, I am constantly engaged in learning and applying the latest technologies.',
+    'download-cv':        'Download CV',
     'hero-card-label':    'Current position',
     'hero-card-tech':     'Key technologies',
     'sec-skills':         '// Skills',
@@ -773,7 +794,7 @@ const translations = {
     'cat-containers':     'Containers &amp; DevOps',
     'cat-containers-count':'7 technologies',
     'cat-net':            'Networking',
-    'cat-net-count':      '7 technologies',
+    'cat-net-count':      '5 technologies',
     'cat-db':             'Database',
     'cat-db-count':       '3 technologies',
     'cat-mon':            'Monitoring &amp; Backup',
@@ -785,14 +806,14 @@ const translations = {
     'sec-exp':            '// Experience &amp; Education',
     'tl1-date':           '2025 — Present',
     'tl1-loc':            'Bari, Italy',
-    'tl1-prose':          'At Deda Cle I took on the operational management of enterprise IT infrastructures serving the Puglia public administration — including <strong>pagoPA</strong> systems for the Regione Puglia. My daily work involves <strong>multi-node Kubernetes clusters in production</strong>, handling complex troubleshooting while ensuring service continuity. The entire virtualization infrastructure is based on <strong>VMware with NSX-T networking</strong>, which I administer for micro-perimeter network segmentation. On the data side, I manage <strong>PostgreSQL</strong> with streaming replication and performance tuning, while for data resilience I rely on <strong>Veeam and Vinchin</strong>. Proactive monitoring via <strong>Zabbix</strong> and systematic <strong>SSL/TLS</strong> certificate management complete the scope of responsibility.',
+    'tl1-prose':          'At DedaNext I took on the operational management of enterprise IT infrastructures serving the Puglia public administration — including <strong>pagoPA</strong> systems for the Regione Puglia. My daily work involves <strong>multi-node Kubernetes clusters in production</strong>, handling complex troubleshooting while ensuring service continuity. The entire virtualization infrastructure is based on <strong>VMware with NSX-T networking</strong>, which I administer for micro-perimeter network segmentation. On the data side, I manage <strong>PostgreSQL</strong> with streaming replication and performance tuning, while for data resilience I rely on <strong>Veeam and Vinchin</strong>. Proactive monitoring via <strong>Zabbix</strong> and systematic <strong>SSL/TLS</strong> certificate management complete the scope of responsibility.',
     'tl2-loc':            'Bari, Italy',
     'tl2-prose':          'At Auriga I consolidated the foundations of my sysadmin profile, managing a mixed <strong>Windows and Linux VM fleet on VMware</strong> in a high-availability banking environment. I designed and maintained backup strategies with <strong>Veeam</strong>, developed automation solutions in <strong>PowerShell, Python, and Bash</strong> to reduce repetitive tasks and increase configuration consistency. On the security side, I implemented <strong>enterprise antispam</strong> solutions and contributed to the company\'s cybersecurity posture. I fully managed the Microsoft ecosystem: <strong>Active Directory, Exchange, and Office 365</strong>, ensuring digital identity and user collaboration.',
     'tl3-loc':            'Bari, Italy',
     'tl3-prose':          'My journey at Auriga began as a Software Tester on banking ATM software developed in <strong>Java</strong>. A role that honed the analytical approach and defensive mindset that I now apply to infrastructure: identifying breaking points before production does. I validated <strong>functional and security requirements</strong>, contributing to the quality of systems that handle real financial transactions.',
     'tl4-date':           '2018 — 2026',
     'tl4-role':           'ITPS Degree',
-    'tl4-prose':          'Academic path in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Degree obtained in <strong>October 2026</strong>.',
+    'tl4-prose':          'Academic path in <strong>ITPS — Informatica e Tecnologie per la Produzione del Software</strong>, with focus on object-oriented programming, operating systems, and mobile development. The course strengthened theoretical foundations in algorithms, networking, and databases, providing the conceptual framework that supports day-to-day practical work. Degree obtained in <strong>2026</strong>.',
     'tl5-role':           'Scientific Diploma',
     'tl5-prose':          '<strong>Applied Sciences</strong> curriculum with a first structured approach to mathematics, physics, and computer science — the spark that directed all subsequent paths toward technology.',
     'sec-certs':          '// Certifications',
@@ -805,6 +826,7 @@ const translations = {
     'proj-tag-arkanoid':  'Android · Java · online multiplayer · multilanguage',
     'proj-tag-3d':        'Prototyping · custom parts · FDM',
     'proj-tag-ziply':     'Bike, e-scooter &amp; e-car sharing · Flutter + Go',
+    'wip-badge':          'Work in progress',
     'sec-langs':          '// Languages',
     'lang-it-level':      'Native',
     'footer-sub':         'System Administrator · Bari, Italy'
